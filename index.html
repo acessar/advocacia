@@ -3,54 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silva & Associados · Advocacia de Vanguarda</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Tribunal Digital · Advocacia Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --pure-white: #ffffff;
-            --pearl-white: #fefefe;
-            --cream-white: #faf9f7;
-            --off-white: #f8f7f4;
-            --light-beige: #f5f3f0;
-            --soft-beige: #f0ede8;
-            --warm-beige: #e8e3dc;
-            --medium-beige: #ddd6cc;
-            --deep-beige: #d4c9bb;
-            --rich-beige: #c9baa8;
-            --dark-beige: #b8a690;
+            --ivory: #fefcf8;
+            --pearl: #f9f6f1;
+            --cream: #f4f1ea;
+            --sand: #efe9df;
+            --warm-beige: #e8dfd1;
+            --soft-beige: #ddd2bf;
+            --medium-beige: #d0c2a8;
+            --rich-beige: #c4b394;
+            --deep-beige: #b5a082;
+            --dark-beige: #9d8661;
             
-            --charcoal: #1a1a1a;
-            --coal-black: #0f0f0f;
-            --jet-black: #000000;
+            --pure-black: #000000;
+            --charcoal: #0f0f0f;
+            --dark-carbon: #1a1a1a;
             --soft-black: #2d2d2d;
             --medium-gray: #404040;
-            --light-gray: #6b6b6b;
-            --silver-gray: #8a8a8a;
-            --mist-gray: #a8a8a8;
+            --slate: #525252;
+            --silver: #737373;
+            --light-silver: #a3a3a3;
             
-            --primary-beige: #c9baa8;
-            --accent-beige: #b8a690;
-            --highlight-beige: #ddd6cc;
-            --gradient-beige: #e8e3dc;
-            
-            --text-primary: #1a1a1a;
+            --accent-gold: #b5a082;
+            --highlight-gold: #c4b394;
+            --text-primary: #0f0f0f;
             --text-secondary: #404040;
-            --text-muted: #6b6b6b;
-            --text-light: #8a8a8a;
+            --text-muted: #737373;
             
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(26, 26, 26, 0.1);
-            --glass-blur: blur(20px);
+            --shadow-glow: 0 0 40px rgba(181, 160, 130, 0.3);
+            --shadow-deep: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --shadow-sharp: 0 8px 32px rgba(0, 0, 0, 0.12);
             
-            --shadow-subtle: 0 1px 3px 0 rgb(26 26 26 / 0.1), 0 1px 2px -1px rgb(26 26 26 / 0.1);
-            --shadow-soft: 0 4px 6px -1px rgb(26 26 26 / 0.15), 0 2px 4px -2px rgb(26 26 26 / 0.15);
-            --shadow-medium: 0 10px 15px -3px rgb(26 26 26 / 0.2), 0 4px 6px -4px rgb(26 26 26 / 0.2);
-            --shadow-large: 0 25px 50px -12px rgb(26 26 26 / 0.3);
-            --shadow-gold: 0 0 30px rgba(201, 186, 168, 0.4);
-            
-            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-in-quart: cubic-bezier(0.5, 0, 0.75, 0);
             --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-            --ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1);
+            --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+            --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         * {
@@ -60,21 +50,25 @@
         }
 
         ::selection {
-            background: var(--primary-beige);
-            color: var(--pure-white);
+            background: var(--accent-gold);
+            color: var(--ivory);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: var(--cream-white);
+            background: var(--ivory);
             overflow-x: hidden;
-            font-weight: 400;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
+        /* Geometric Background Pattern */
         body::before {
             content: '';
             position: fixed;
@@ -82,329 +76,274 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(201, 186, 168, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(26, 26, 26, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(184, 166, 144, 0.05) 0%, transparent 50%);
+            background-image: 
+                linear-gradient(30deg, rgba(181, 160, 130, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(181, 160, 130, 0.03) 87.5%, rgba(181, 160, 130, 0.03)),
+                linear-gradient(150deg, rgba(181, 160, 130, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(181, 160, 130, 0.03) 87.5%, rgba(181, 160, 130, 0.03)),
+                linear-gradient(30deg, rgba(15, 15, 15, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(15, 15, 15, 0.02) 87.5%, rgba(15, 15, 15, 0.02)),
+                linear-gradient(150deg, rgba(15, 15, 15, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(15, 15, 15, 0.02) 87.5%, rgba(15, 15, 15, 0.02));
+            background-size: 120px 120px;
             pointer-events: none;
-            z-index: -2;
+            z-index: -1;
         }
 
+        /* Container System */
         .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .container-wide {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 clamp(1rem, 5vw, 3rem);
+            padding: 0 2rem;
         }
 
-        /* Advanced Typography */
-        .display-xl {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 700;
+        /* Typography */
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .display-1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
             line-height: 0.9;
-            letter-spacing: -0.05em;
-            background: linear-gradient(135deg, var(--charcoal) 0%, var(--primary-beige) 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.04em;
         }
 
-        .display-lg {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 600;
+        .display-2 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
             line-height: 1.1;
             letter-spacing: -0.03em;
         }
 
-        .title-xl {
-            font-size: clamp(1.5rem, 3vw, 2.25rem);
-            font-weight: 600;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
+        .text-lg {
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            line-height: 1.6;
         }
 
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.875rem;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        /* Sophisticated Header */
-        header {
+        /* Advanced Header with Morphing Effects */
+        .header {
             position: fixed;
             top: 0;
-            width: 100%;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            transition: all 0.5s var(--ease-out-expo);
+            padding: 1.5rem 0;
+            transition: all 0.4s var(--ease-out-quart);
+            background: linear-gradient(180deg, var(--ivory) 0%, rgba(254, 252, 248, 0.95) 70%, rgba(254, 252, 248, 0.8) 100%);
         }
 
-        header.scrolled {
-            background: rgba(250, 249, 247, 0.95);
-            backdrop-filter: var(--glass-blur);
-            border-bottom: 1px solid var(--glass-border);
-            box-shadow: var(--shadow-soft);
+        .header.scrolled {
+            padding: 1rem 0;
+            background: rgba(254, 252, 248, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(181, 160, 130, 0.2);
+            box-shadow: var(--shadow-sharp);
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 100px;
             position: relative;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
             text-decoration: none;
+            color: var(--text-primary);
             position: relative;
-            z-index: 2;
+            z-index: 10;
         }
 
-        .logo-mark {
-            width: 48px;
-            height: 48px;
+        .logo-symbol {
+            width: 50px;
+            height: 50px;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            margin-right: 1rem;
+            overflow: visible;
         }
 
-        .logo-mark::before {
+        .logo-symbol::before {
             content: '';
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: conic-gradient(from 0deg, var(--charcoal), var(--primary-beige), var(--accent-beige), var(--charcoal));
-            border-radius: 12px;
-            animation: rotate 8s linear infinite;
+            background: radial-gradient(circle, var(--pure-black) 0%, var(--charcoal) 100%);
+            border-radius: 50%;
+            transition: all 0.4s var(--ease-elastic);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .logo-mark::after {
-            content: '';
-            position: absolute;
-            width: calc(100% - 4px);
-            height: calc(100% - 4px);
-            background: var(--pure-white);
-            border-radius: 10px;
-            z-index: 1;
-        }
-
-        .logo-inner {
-            position: relative;
-            z-index: 2;
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(45deg, var(--charcoal), var(--primary-beige));
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-inner::before {
+        .logo-symbol::after {
             content: '⚖';
-            font-size: 14px;
-            color: var(--pure-white);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--ivory);
+            font-size: 1.5rem;
+            z-index: 2;
+            transition: all 0.4s var(--ease-elastic);
+        }
+
+        /* Pulsing ring effect for logo */
+        .logo:hover .logo-symbol::before {
+            background: radial-gradient(circle, var(--accent-gold) 0%, var(--highlight-gold) 100%);
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 6px 25px rgba(181, 160, 130, 0.4);
+        }
+
+        .logo:hover .logo-symbol::after {
+            color: var(--pure-black);
+            transform: translate(-50%, -50%) rotate(-360deg) scale(1.1);
+        }
+
+        .logo-symbol:hover::before {
+            box-shadow: 
+                0 6px 25px rgba(181, 160, 130, 0.4),
+                0 0 0 10px rgba(181, 160, 130, 0.1),
+                0 0 0 20px rgba(181, 160, 130, 0.05);
         }
 
         .logo-text {
-            font-weight: 600;
-            font-size: 1.25rem;
-            color: var(--text-primary);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
             letter-spacing: -0.02em;
         }
 
-        @keyframes rotate {
-            to { transform: rotate(360deg); }
-        }
-
-        nav ul {
+        .nav {
             display: flex;
-            list-style: none;
             gap: 2.5rem;
             align-items: center;
         }
 
-        nav a {
+        .nav-link {
             text-decoration: none;
             color: var(--text-secondary);
             font-weight: 500;
+            font-size: 0.95rem;
             position: relative;
-            padding: 0.75rem 0;
-            transition: all 0.3s var(--ease-out-expo);
+            padding: 0.5rem 0;
+            transition: all 0.3s var(--ease-out-quart);
             overflow: hidden;
         }
 
-        nav a::before {
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(181, 160, 130, 0.1), transparent);
+            transition: all 0.5s var(--ease-out-quart);
+        }
+
+        .nav-link::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--primary-beige), var(--accent-beige));
-            transition: width 0.3s var(--ease-out-expo);
+            background: linear-gradient(90deg, var(--accent-gold), var(--highlight-gold));
+            transition: width 0.4s var(--ease-out-quart);
         }
 
-        nav a:hover {
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
             color: var(--text-primary);
         }
 
-        nav a:hover::before {
+        .nav-link:hover::after,
+        .nav-link.active::after {
             width: 100%;
         }
 
-        nav a.active {
-            color: var(--primary-beige);
-        }
-
-        nav a.active::before {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            width: 40px;
-            height: 40px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            backdrop-filter: var(--glass-blur);
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s var(--ease-out-expo);
-        }
-
-        .menu-toggle:hover {
-            background: var(--light-beige);
-            border-color: var(--primary-beige);
-        }
-
-        .menu-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 14px;
-        }
-
-        .menu-icon span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background: var(--text-primary);
-            margin: 4px 0;
-            transition: all 0.3s var(--ease-out-expo);
-            border-radius: 1px;
-        }
-
-        /* Elegant Hero */
+        /* Hero Section with Split Screen Effect */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
+            background: linear-gradient(135deg, var(--ivory) 0%, var(--pearl) 50%, var(--cream) 100%);
             overflow: hidden;
-            background: linear-gradient(135deg, var(--pure-white) 0%, var(--off-white) 100%);
         }
 
-        .hero-bg {
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
+            right: 0;
+            width: 50%;
             height: 100%;
-            opacity: 0.6;
-        }
-
-        .floating-elements {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .floating-element {
-            position: absolute;
-            background: linear-gradient(45deg, var(--primary-beige), var(--accent-beige));
-            border-radius: 50%;
-            filter: blur(1px);
-            animation: float 20s ease-in-out infinite;
-            opacity: 0.2;
-        }
-
-        .floating-element:nth-child(1) {
-            width: 60px;
-            height: 60px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .floating-element:nth-child(2) {
-            width: 40px;
-            height: 40px;
-            top: 60%;
-            right: 15%;
-            animation-delay: -5s;
-        }
-
-        .floating-element:nth-child(3) {
-            width: 80px;
-            height: 80px;
-            bottom: 30%;
-            left: 70%;
-            animation-delay: -10s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.15; }
-            25% { transform: translateY(-30px) rotate(90deg); opacity: 0.25; }
-            50% { transform: translateY(20px) rotate(180deg); opacity: 0.2; }
-            75% { transform: translateY(-20px) rotate(270deg); opacity: 0.3; }
+            background: linear-gradient(135deg, var(--pure-black) 0%, var(--charcoal) 100%);
+            clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 1;
         }
 
         .hero-content {
             position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 120px 0 60px;
+            z-index: 5;
+            width: 100%;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: calc(100vh - 120px);
+            align-items: center;
+        }
+
+        .hero-text {
+            padding-right: 3rem;
+            position: relative;
+            z-index: 10;
         }
 
         .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 0.5rem 1rem;
-            margin-bottom: 2rem;
-            backdrop-filter: var(--glass-blur);
-            font-family: 'JetBrains Mono', monospace;
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: rgba(181, 160, 130, 0.1);
+            border: 1px solid rgba(181, 160, 130, 0.3);
+            border-radius: 30px;
             font-size: 0.75rem;
-            font-weight: 500;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--primary-beige);
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-badge::before {
             content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--primary-beige);
-            border-radius: 50%;
-            animation: pulse-gold 2s ease-in-out infinite;
+            position: absolute;
+            top: 50%;
+            left: -100%;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            animation: scan 3s ease-in-out infinite;
         }
 
-        @keyframes pulse-gold {
-            0%, 100% { box-shadow: 0 0 5px var(--primary-beige); }
-            50% { box-shadow: 0 0 20px var(--primary-beige), 0 0 30px var(--primary-beige); }
+        @keyframes scan {
+            0%, 100% { left: -100%; }
+            50% { left: 100%; }
         }
 
         .hero-title {
@@ -412,37 +351,101 @@
             position: relative;
         }
 
-        .hero-subtitle {
-            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            max-width: 600px;
-            line-height: 1.6;
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--highlight-gold) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
         }
 
-        .cta-group {
+        .hero-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--highlight-gold));
+            animation: underline 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes underline {
+            0% { transform: scaleX(0); transform-origin: left; }
+            100% { transform: scaleX(1); transform-origin: left; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            max-width: 500px;
+        }
+
+        .hero-visual {
+            position: relative;
+            z-index: 2;
+            height: 100%;
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 80%;
+            height: 70vh;
+            max-height: 600px;
+            overflow: hidden;
+            clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 20% 100%, 0 80%);
+            transition: all 0.6s var(--ease-out-quart);
+        }
+
+        .hero-image-container:hover {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%, 0 0);
+            transform: scale(1.05);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0%) contrast(1.1);
+            transition: all 0.6s var(--ease-out-quart);
+        }
+
+        .hero-image-container:hover .hero-image {
+            filter: grayscale(0%) contrast(1.2) brightness(1.1);
+        }
+
+        /* Floating Action Buttons */
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
             align-items: center;
         }
 
-        /* Professional Buttons */
-        .btn-primary {
-            position: relative;
+        .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            background: linear-gradient(135deg, var(--charcoal), var(--soft-black));
-            color: var(--pure-white);
             padding: 1rem 2rem;
-            border-radius: 12px;
-            text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s var(--ease-out-expo);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow-medium);
+            transition: all 0.4s var(--ease-out-quart);
+        }
+
+        .btn-primary {
+            background: var(--pure-black);
+            color: var(--ivory);
+            border-radius: 0;
+            clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 100%, 20px 100%);
         }
 
         .btn-primary::before {
@@ -453,7 +456,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+            transition: left 0.6s ease;
         }
 
         .btn-primary:hover::before {
@@ -461,342 +464,390 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-large);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-deep);
         }
 
         .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: var(--glass-bg);
+            background: transparent;
             color: var(--text-primary);
-            padding: 1rem 2rem;
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 500;
-            backdrop-filter: var(--glass-blur);
-            transition: all 0.3s var(--ease-out-expo);
-        }
-
-        .btn-secondary:hover {
-            background: var(--light-beige);
-            border-color: var(--primary-beige);
-            transform: translateY(-2px);
-        }
-
-        /* Section Framework */
-        .section {
-            padding: clamp(5rem, 12vw, 10rem) 0;
+            border: 2px solid var(--accent-gold);
+            border-radius: 0;
             position: relative;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: clamp(4rem, 8vw, 6rem);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section-badge {
-            display: inline-block;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 0.5rem 1rem;
-            margin-bottom: 1.5rem;
-            backdrop-filter: var(--glass-blur);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--primary-beige);
-        }
-
-        .section-title {
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .section-description {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* About Section */
-        .about {
-            background: linear-gradient(135deg, var(--off-white) 0%, var(--light-beige) 100%);
-            position: relative;
-        }
-
-        .about::before {
+        .btn-secondary::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--accent-gold);
+            transition: width 0.4s var(--ease-out-quart);
+            z-index: -1;
+        }
+
+        .btn-secondary:hover::after {
             width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary-beige), transparent);
+        }
+
+        .btn-secondary:hover {
+            color: var(--ivory);
+            transform: translateY(-2px);
+        }
+
+        /* Section System with Parallax */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: 
+                radial-gradient(circle at 25% 25%, var(--accent-gold) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, var(--pure-black) 1px, transparent 1px);
+            background-size: 50px 50px, 30px 30px;
+            pointer-events: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .section-eyebrow {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-eyebrow::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--highlight-gold));
+        }
+
+        .section-title {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-description {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        /* About Section with Sliding Panels */
+        .about {
+            background: linear-gradient(135deg, var(--sand) 0%, var(--warm-beige) 100%);
+            position: relative;
+            overflow: hidden;
         }
 
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: clamp(3rem, 8vw, 6rem);
+            gap: 6rem;
             align-items: center;
         }
 
         .about-content {
-            space-y: 2rem;
+            position: relative;
+        }
+
+        .about-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .about-content h3::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--accent-gold), var(--highlight-gold));
+            border-radius: 2px;
         }
 
         .about-text {
-            font-size: 1.125rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
             line-height: 1.7;
             margin-bottom: 2rem;
         }
 
-        .stats-grid {
+        .about-stats {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .stat-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 2rem 1.5rem;
+        .stat-item {
             text-align: center;
-            backdrop-filter: var(--glass-blur);
-            transition: all 0.3s var(--ease-out-expo);
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(181, 160, 130, 0.2);
             position: relative;
             overflow: hidden;
+            transition: all 0.4s var(--ease-out-quart);
         }
 
-        .stat-card::before {
+        .stat-item::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary-beige), var(--accent-beige));
-            transform: translateX(-100%);
-            transition: transform 0.6s var(--ease-out-expo);
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(181, 160, 130, 0.1), transparent);
+            transition: left 0.6s ease;
         }
 
-        .stat-card:hover::before {
-            transform: translateX(0);
+        .stat-item:hover::before {
+            left: 100%;
         }
 
-        .stat-card:hover {
+        .stat-item:hover {
             transform: translateY(-5px);
-            background: var(--light-beige);
-            box-shadow: var(--shadow-medium);
+            box-shadow: var(--shadow-glow);
         }
 
         .stat-number {
+            font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-beige);
+            font-weight: 900;
+            color: var(--accent-gold);
             display: block;
-            margin-bottom: 0.5rem;
+            line-height: 1;
         }
 
         .stat-label {
-            font-size: 0.875rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+            font-weight: 600;
         }
 
         .about-visual {
             position: relative;
-            height: 500px;
-            border-radius: 20px;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--warm-beige) 0%, var(--deep-beige) 100%);
-            box-shadow: var(--shadow-large);
         }
 
-        .about-visual::before {
+        .about-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 0;
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+            transition: all 0.6s var(--ease-out-quart);
+            filter: contrast(1.1) saturate(0.9);
+        }
+
+        .about-visual:hover .about-image {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            transform: scale(1.02);
+        }
+
+        /* Services with Morphing Cards */
+        .services {
+            background: var(--ivory);
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--pearl);
+            border: 1px solid rgba(181, 160, 130, 0.15);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s var(--ease-out-quart);
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+        }
+
+        .service-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 30% 30%, rgba(201, 186, 168, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 70% 70%, rgba(26, 26, 26, 0.1) 0%, transparent 50%);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(181, 160, 130, 0.1) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.6s var(--ease-out-quart);
             z-index: 1;
         }
 
-        .about-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s var(--ease-out-expo);
+        .service-card:hover::before {
+            transform: scale(1);
         }
 
-        .about-visual:hover img {
-            transform: scale(1.05);
+        .service-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: var(--shadow-glow);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%, 0 0);
         }
 
-        /* Legal Specialties */
-        .specialties {
-            background: var(--pure-white);
-        }
-
-        .specialties-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .specialty-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2.5rem;
-            backdrop-filter: var(--glass-blur);
-            transition: all 0.4s var(--ease-out-expo);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .specialty-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(201, 186, 168, 0.08) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s var(--ease-out-expo);
-        }
-
-        .specialty-card:hover::before {
-            opacity: 1;
-        }
-
-        .specialty-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-beige);
-            box-shadow: var(--shadow-gold);
-        }
-
-        .specialty-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--charcoal), var(--primary-beige));
-            border-radius: 16px;
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle at 30% 30%, var(--charcoal) 0%, var(--pure-black) 100%);
+            color: var(--ivory);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 2rem;
             margin-bottom: 2rem;
             position: relative;
-            overflow: hidden;
-            font-size: 2rem;
-            color: var(--pure-white);
+            z-index: 2;
+            border-radius: 50%;
+            transition: all 0.4s var(--ease-elastic);
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.2),
+                inset 0 2px 4px rgba(255, 255, 255, 0.1);
         }
 
-        .specialty-title {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
+        .service-card:hover .service-icon {
+            background: radial-gradient(circle at 30% 30%, var(--highlight-gold) 0%, var(--accent-gold) 100%);
+            color: var(--pure-black);
+            transform: rotate(360deg) scale(1.15);
+            box-shadow: 
+                0 8px 30px rgba(181, 160, 130, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.2);
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 2;
         }
 
-        .specialty-description {
+        .service-description {
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Team Grid */
+        /* Team with Reveal Effects */
         .team {
-            background: var(--off-white);
+            background: linear-gradient(135deg, var(--cream) 0%, var(--sand) 100%);
+            position: relative;
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
         }
 
-        .team-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
+        .team-member {
+            background: var(--ivory);
             overflow: hidden;
-            backdrop-filter: var(--glass-blur);
-            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+            transition: all 0.5s var(--ease-out-quart);
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%);
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-deep);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%);
+        }
+
+        .team-photo-container {
+            height: 350px;
+            overflow: hidden;
             position: relative;
         }
 
-        .team-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--accent-beige);
-            box-shadow: 0 25px 50px rgba(201, 186, 168, 0.3);
-        }
-
-        .team-image {
-            width: 100%;
-            height: 280px;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--warm-beige), var(--deep-beige));
-        }
-
-        .team-image::before {
+        .team-photo-container::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, transparent 0%, rgba(250, 249, 247, 0.3) 100%);
+            background: linear-gradient(135deg, transparent 0%, rgba(181, 160, 130, 0.3) 100%);
             z-index: 2;
+            transition: all 0.5s var(--ease-out-quart);
         }
 
-        .team-image img {
+        .team-member:hover .team-photo-container::before {
+            background: linear-gradient(135deg, transparent 0%, rgba(181, 160, 130, 0.1) 100%);
+        }
+
+        .team-photo {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s var(--ease-out-expo);
+            transition: all 0.6s var(--ease-out-quart);
+            filter: grayscale(30%) contrast(1.1);
         }
 
-        .team-card:hover .team-image img {
-            transform: scale(1.1);
+        .team-member:hover .team-photo {
+            transform: scale(1.08);
+            filter: grayscale(0%) contrast(1.2);
         }
 
         .team-info {
-            padding: 2rem;
+            padding: 2.5rem;
+            position: relative;
         }
 
         .team-name {
-            color: var(--text-primary);
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
+            color: var(--text-primary);
         }
 
         .team-role {
-            color: var(--accent-beige);
-            font-weight: 500;
-            margin-bottom: 1rem;
-            font-size: 0.875rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .team-bio {
@@ -805,168 +856,55 @@
             font-size: 0.95rem;
         }
 
-        /* Testimonials */
-        .testimonials {
-            background: linear-gradient(135deg, var(--pure-white) 0%, var(--off-white) 100%);
+        /* Contact with Split Layout */
+        .contact {
+            background: var(--warm-beige);
             position: relative;
         }
 
-        .testimonials::before {
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 70vh;
+        }
+
+        .contact-form-section {
+            background: var(--ivory);
+            padding: 4rem;
+            position: relative;
+        }
+
+        .contact-form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(181, 160, 130, 0.05) 100%);
+            pointer-events: none;
+        }
+
+        .contact-info-section {
+            background: var(--pure-black);
+            color: var(--ivory);
+            padding: 4rem;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+        }
+
+        .contact-info-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 25% 25%, rgba(26, 26, 26, 0.02) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(201, 186, 168, 0.05) 0%, transparent 50%);
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(181, 160, 130, 0.1) 2px, transparent 2px);
+            background-size: 40px 40px;
             pointer-events: none;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2.5rem;
-            backdrop-filter: var(--glass-blur);
-            transition: all 0.4s var(--ease-out-expo);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--charcoal), var(--primary-beige), var(--accent-beige));
-            transform: translateX(-100%);
-            transition: transform 0.6s var(--ease-out-expo);
-        }
-
-        .testimonial-card:hover::before {
-            transform: translateX(0);
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            background: var(--light-beige);
-            border-color: var(--primary-beige);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .testimonial-content {
-            font-size: 1.125rem;
-            color: var(--text-primary);
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .testimonial-content::before {
-            content: '"';
-            position: absolute;
-            top: -10px;
-            left: -20px;
-            font-size: 4rem;
-            color: var(--primary-beige);
-            opacity: 0.3;
-            font-family: serif;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .author-avatar {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--charcoal), var(--primary-beige));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            color: var(--pure-white);
-            font-size: 1.25rem;
-            position: relative;
-        }
-
-        .author-avatar::before {
-            content: '';
-            position: absolute;
-            width: calc(100% + 6px);
-            height: calc(100% + 6px);
-            background: conic-gradient(from 0deg, var(--charcoal), var(--primary-beige), var(--accent-beige), var(--charcoal));
-            border-radius: 50%;
-            z-index: -1;
-            animation: rotate 6s linear infinite;
-        }
-
-        .author-info h4 {
-            color: var(--text-primary);
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .author-details {
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
-
-        .rating {
-            display: flex;
-            gap: 0.25rem;
-            margin-top: 0.5rem;
-        }
-
-        .star {
-            width: 16px;
-            height: 16px;
-            background: var(--accent-beige);
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--light-beige);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: clamp(3rem, 8vw, 6rem);
-        }
-
-        .contact-form {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 3rem;
-            backdrop-filter: var(--glass-blur);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-form::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--charcoal), var(--primary-beige), var(--accent-beige));
         }
 
         .form-group {
@@ -976,108 +914,105 @@
 
         .form-label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         .form-input {
             width: 100%;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 1rem 1.25rem;
+            padding: 1rem;
+            border: 2px solid rgba(181, 160, 130, 0.2);
+            background: var(--pearl);
             color: var(--text-primary);
-            font-size: 1rem;
             font-family: inherit;
-            backdrop-filter: var(--glass-blur);
-            transition: all 0.3s var(--ease-out-expo);
+            transition: all 0.3s var(--ease-out-quart);
+            border-radius: 0;
+            position: relative;
         }
 
         .form-input:focus {
             outline: none;
-            border-color: var(--primary-beige);
-            box-shadow: 0 0 20px rgba(201, 186, 168, 0.3);
-            background: var(--pure-white);
-        }
-
-        .form-input::placeholder {
-            color: var(--text-light);
-        }
-
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .contact-info {
-            space-y: 2rem;
+            border-color: var(--accent-gold);
+            background: var(--ivory);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(181, 160, 130, 0.2);
         }
 
         .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            padding: 1.5rem;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            backdrop-filter: var(--glass-blur);
-            transition: all 0.3s var(--ease-out-expo);
-            margin-bottom: 1.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-left: 4rem;
         }
 
-        .contact-item:hover {
-            transform: translateX(10px);
-            border-color: var(--accent-beige);
-            background: var(--pure-white);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .contact-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--charcoal), var(--primary-beige));
-            border-radius: 12px;
+        .contact-item::before {
+            content: attr(data-icon);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3rem;
+            height: 3rem;
+            background: radial-gradient(circle at 30% 30%, var(--highlight-gold) 0%, var(--accent-gold) 100%);
+            color: var(--pure-black);
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            position: relative;
-            font-size: 1.5rem;
-            color: var(--pure-white);
+            font-size: 1.25rem;
+            font-weight: bold;
+            border-radius: 50%;
+            box-shadow: 
+                0 4px 15px rgba(181, 160, 130, 0.3),
+                inset 0 2px 4px rgba(255, 255, 255, 0.2);
+            transition: all 0.3s var(--ease-out-quart);
         }
 
-        .contact-details h4 {
-            color: var(--text-primary);
-            font-weight: 600;
+        .contact-item:hover::before {
+            transform: scale(1.1) rotate(360deg);
+            box-shadow: 
+                0 6px 25px rgba(181, 160, 130, 0.5),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-item h4 {
+            font-weight: 700;
             margin-bottom: 0.5rem;
+            color: var(--ivory);
+            font-size: 1.1rem;
         }
 
-        .contact-details p {
-            color: var(--text-secondary);
-            line-height: 1.5;
+        .contact-item p {
+            color: rgba(254, 252, 248, 0.8);
+            line-height: 1.6;
         }
 
-        /* Professional Footer */
-        footer {
+        /* Footer with Geometric Design */
+        .footer {
             background: var(--charcoal);
-            border-top: 1px solid var(--glass-border);
+            color: var(--ivory);
             padding: 5rem 0 2rem;
             position: relative;
+            overflow: hidden;
         }
 
-        footer::before {
+        .footer::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary-beige), transparent);
+            height: 100%;
+            background-image: 
+                linear-gradient(45deg, transparent 40%, rgba(181, 160, 130, 0.05) 41%, rgba(181, 160, 130, 0.05) 59%, transparent 60%);
+            background-size: 80px 80px;
+            pointer-events: none;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
         }
 
         .footer-grid {
@@ -1088,72 +1023,30 @@
         }
 
         .footer-brand h3 {
-            color: var(--pure-white);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--ivory);
         }
 
         .footer-brand p {
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-link {
-            width: 44px;
-            height: 44px;
-            background: var(--glass-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            backdrop-filter: var(--glass-blur);
-            transition: all 0.3s var(--ease-out-expo);
-            position: relative;
-            overflow: hidden;
-            color: var(--pure-white);
-            font-weight: 600;
-        }
-
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-beige), var(--accent-beige));
-            opacity: 0;
-            transition: opacity 0.3s var(--ease-out-expo);
-        }
-
-        .social-link:hover::before {
-            opacity: 1;
-        }
-
-        .social-link:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary-beige);
+            color: rgba(254, 252, 248, 0.7);
+            line-height: 1.7;
+            font-size: 1rem;
         }
 
         .footer-section h4 {
-            color: var(--pure-white);
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 1.5rem;
-            font-size: 1.125rem;
+            color: var(--ivory);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .footer-links {
             list-style: none;
-            space-y: 0.75rem;
         }
 
         .footer-links li {
@@ -1161,34 +1054,79 @@
         }
 
         .footer-links a {
-            color: var(--text-light);
+            color: rgba(254, 252, 248, 0.7);
             text-decoration: none;
-            transition: all 0.3s var(--ease-out-expo);
+            font-size: 0.95rem;
+            transition: all 0.3s var(--ease-out-quart);
+            position: relative;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            left: -1rem;
+            top: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s var(--ease-out-quart);
+            transform: translateY(-50%);
         }
 
         .footer-links a:hover {
-            color: var(--primary-beige);
-            transform: translateX(5px);
+            color: var(--ivory);
+            transform: translateX(1rem);
+        }
+
+        .footer-links a:hover::before {
+            width: 0.5rem;
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
+            border-top: 1px solid rgba(181, 160, 130, 0.2);
+            color: rgba(254, 252, 248, 0.6);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
-            .about-grid,
-            .contact-grid {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero::before {
+                display: none;
+            }
+
+            .hero-text {
+                padding-right: 0;
+                text-align: center;
+            }
+
+            .about-grid {
                 grid-template-columns: 1fr;
                 gap: 4rem;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info-section {
+                clip-path: none;
             }
 
             .footer-grid {
@@ -1198,47 +1136,40 @@
         }
 
         @media (max-width: 768px) {
-            .menu-toggle {
+            .mobile-menu-btn {
                 display: block;
             }
 
-            nav ul {
+            .nav {
                 display: none;
                 position: absolute;
                 top: 100%;
                 left: 0;
-                width: 100%;
-                background: rgba(250, 249, 247, 0.95);
-                backdrop-filter: var(--glass-blur);
-                border: 1px solid var(--glass-border);
-                border-top: none;
-                border-radius: 0 0 16px 16px;
+                right: 0;
+                background: var(--ivory);
+                border-top: 1px solid rgba(181, 160, 130, 0.2);
                 flex-direction: column;
                 padding: 2rem;
-                gap: 1.5rem;
-                box-shadow: var(--shadow-soft);
+                gap: 1rem;
+                box-shadow: var(--shadow-sharp);
             }
 
-            nav ul.active {
+            .nav.active {
                 display: flex;
             }
 
-            .hero-content {
-                padding: 100px 0 60px;
+            .hero-text {
+                padding-right: 0;
             }
 
-            .cta-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .stats-grid {
+            .about-stats {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
 
-            .contact-form {
-                padding: 2rem;
+            .contact-form-section,
+            .contact-info-section {
+                padding: 3rem 2rem;
             }
 
             .footer-grid {
@@ -1246,257 +1177,282 @@
                 gap: 2rem;
                 text-align: center;
             }
-
-            .social-links {
-                justify-content: center;
-            }
         }
 
         @media (max-width: 480px) {
-            .specialties-grid,
-            .team-grid,
-            .testimonials-grid {
+            .services-grid {
                 grid-template-columns: 1fr;
             }
 
-            .contact-item {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
+            .team-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* Scroll Animations */
-        .reveal {
+        /* Enhanced circular icon effects */
+        .service-icon::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: conic-gradient(from 0deg, var(--accent-gold), var(--highlight-gold), var(--accent-gold));
+            border-radius: 50%;
+            z-index: -1;
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s var(--ease-out-expo);
+            transition: all 0.4s var(--ease-out-quart);
+            animation: rotate-slow 8s linear infinite;
         }
 
-        .reveal.active {
+        .service-card:hover .service-icon::before {
+            opacity: 1;
+        }
+
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .contact-item::after {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            width: calc(3rem + 4px);
+            height: calc(3rem + 4px);
+            background: conic-gradient(from 45deg, transparent, var(--accent-gold), transparent);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.3s var(--ease-out-quart);
+            animation: pulse-ring 3s ease-in-out infinite;
+        }
+
+        .contact-item:hover::after {
+            opacity: 1;
+        }
+
+        @keyframes pulse-ring {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.3;
+            }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s var(--ease-out-quart);
+        }
+
+        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Loading States */
-        body.loading {
-            overflow: hidden;
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s var(--ease-out-quart);
         }
 
-        body.loading::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--pure-white);
-            z-index: 9999;
-            animation: fadeOut 1s ease 0.5s forwards;
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
 
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s var(--ease-out-quart);
         }
 
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: rgba(201, 186, 168, 0.1);
-            z-index: 1001;
-        }
-
-        .scroll-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--charcoal), var(--primary-beige), var(--accent-beige));
-            width: 0%;
-            transition: width 0.1s ease;
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
     </style>
 </head>
-<body class="loading">
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-        <div class="scroll-progress"></div>
-    </div>
-
+<body>
     <!-- Header -->
-    <header>
+    <header class="header" id="header">
         <div class="container">
             <div class="header-content">
-                <a href="#home" class="logo">
-                    <div class="logo-mark">
-                        <div class="logo-inner"></div>
-                    </div>
-                    <span class="logo-text">Silva & Associados</span>
+                <a href="#" class="logo">
+                    <div class="logo-symbol"></div>
+                    <div class="logo-text">Tribunal Digital</div>
                 </a>
-                <nav>
-                    <ul>
-                        <li><a href="#home" class="active">Início</a></li>
-                        <li><a href="#about">Sobre</a></li>
-                        <li><a href="#specialties">Áreas de Atuação</a></li>
-                        <li><a href="#team">Equipe</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
+                
+                <nav class="nav" id="nav">
+                    <a href="#home" class="nav-link active">Início</a>
+                    <a href="#about" class="nav-link">Sobre</a>
+                    <a href="#services" class="nav-link">Serviços</a>
+                    <a href="#team" class="nav-link">Equipe</a>
+                    <a href="#contact" class="nav-link">Contato</a>
                 </nav>
-                <button class="menu-toggle">
-                    <div class="menu-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-bg">
-            <div class="floating-elements">
-                <div class="floating-element"></div>
-                <div class="floating-element"></div>
-                <div class="floating-element"></div>
-            </div>
-        </div>
-        <div class="container">
+        <div class="container-wide">
             <div class="hero-content">
-                <div class="hero-badge mono">
-                    Advocacia · 2025
-                </div>
-                <h1 class="hero-title display-xl">
-                    Justiça com<br>
-                    precisão e<br>
-                    excelência
-                </h1>
-                <p class="hero-subtitle">
-                    Combinamos expertise jurídica sólida com tecnologia avançada para entregar 
-                    soluções legais estratégicas e resultados excepcionais para nossos clientes.
-                </p>
-                <div class="cta-group">
-                    <a href="#contact" class="btn-primary">
-                        <span>Consulta Jurídica</span>
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                        </svg>
-                    </a>
-                    <a href="#about" class="btn-secondary">
-                        <span>Nossos Resultados</span>
-                    </a>
+                <div class="hero-grid">
+                    <div class="hero-text fade-in">
+                        <div class="hero-badge">Advocacia Premium 2025</div>
+                        <h1 class="hero-title display-1 serif">
+                            <span class="highlight">Direito</span> que<br>
+                            transforma<br>
+                            realidades
+                        </h1>
+                        <p class="hero-subtitle">
+                            Unimos tradição jurídica com inovação tecnológica para entregar 
+                            soluções que protegem seus interesses e aceleram seus resultados.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#contact" class="btn btn-primary">
+                                Consulta Estratégica
+                                <span>→</span>
+                            </a>
+                            <a href="#about" class="btn btn-secondary">
+                                Nossos Resultados
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-visual slide-in-right">
+                        <div class="hero-image-container">
+                            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Escritório Premium" class="hero-image">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about section">
+    <section id="about" class="section about">
+        <div class="section-overlay"></div>
         <div class="container">
-            <div class="section-header reveal">
-                <div class="section-badge mono">Tradição · Inovação</div>
-                <h2 class="section-title display-lg">Redefinindo a prática jurídica</h2>
+            <div class="section-header fade-in">
+                <div class="section-eyebrow">Nossa Filosofia</div>
+                <h2 class="section-title display-2 serif">Advocacia que vai além do tradicional</h2>
                 <p class="section-description">
-                    Com mais de duas décadas de experiência, nosso escritório combina tradição jurídica 
-                    com métodos inovadores, oferecendo assessoria completa e estratégica.
+                    Combinamos expertise jurídica sólida com metodologia inovadora, 
+                    criando estratégias que protegem e impulsionam seus objetivos.
                 </p>
             </div>
+
             <div class="about-grid">
-                <div class="about-content reveal">
-                    <h3 class="title-xl">Excelência em cada caso</h3>
+                <div class="about-content slide-in-left">
+                    <h3>Metodologia Única</h3>
                     <p class="about-text">
-                        Nossa abordagem integra análise jurídica profunda, pesquisa automatizada e 
-                        estratégias personalizadas para garantir os melhores resultados possíveis.
+                        Nossa abordagem integra análise jurídica profunda com inteligência de negócios, 
+                        permitindo soluções que vão muito além do cumprimento legal - elas geram vantagem competitiva.
                     </p>
                     <p class="about-text">
-                        Utilizamos tecnologia de ponta para análise de precedentes, gestão processual 
-                        e acompanhamento em tempo real, mantendo nossos clientes sempre informados.
+                        Utilizamos tecnologia de ponta para análise preditiva de riscos, automação de processos 
+                        e monitoramento inteligente de mudanças regulamentares que podem impactar seu negócio.
                     </p>
-                    <div class="stats-grid">
-                        <div class="stat-card">
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
                             <span class="stat-number">25+</span>
-                            <span class="stat-label mono">Anos de Experiência</span>
+                            <div class="stat-label">Anos de Excelência</div>
                         </div>
-                        <div class="stat-card">
-                            <span class="stat-number">2.8k+</span>
-                            <span class="stat-label mono">Casos Vencidos</span>
+                        <div class="stat-item">
+                            <span class="stat-number">98.7%</span>
+                            <div class="stat-label">Taxa de Sucesso</div>
                         </div>
-                        <div class="stat-card">
-                            <span class="stat-number">98.5%</span>
-                            <span class="stat-label mono">Taxa de Sucesso</span>
+                        <div class="stat-item">
+                            <span class="stat-number">2.1k+</span>
+                            <div class="stat-label">Casos Vencidos</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">R$ 5B+</span>
+                            <div class="stat-label">Em Transações</div>
                         </div>
                     </div>
                 </div>
-                <div class="about-visual reveal">
-                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Escritório Silva & Associados">
+                
+                <div class="about-visual slide-in-right">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Equipe de Advocacia" class="about-image">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Specialties Section -->
-    <section id="specialties" class="specialties section">
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="section-overlay"></div>
         <div class="container">
-            <div class="section-header reveal">
-                <div class="section-badge mono">Especialização · Completa</div>
-                <h2 class="section-title display-lg">Áreas de atuação estratégica</h2>
+            <div class="section-header fade-in">
+                <div class="section-eyebrow">Especialidades</div>
+                <h2 class="section-title display-2 serif">Soluções jurídicas completas</h2>
                 <p class="section-description">
-                    Nossa expertise abrange as principais áreas do direito, com foco em soluções 
-                    personalizadas e resultados consistentes para cada cliente.
+                    Expertise multidisciplinar para atender todas as necessidades jurídicas 
+                    da sua empresa com excelência técnica incomparável.
                 </p>
             </div>
-            <div class="specialties-grid">
-                <div class="specialty-card reveal">
-                    <div class="specialty-icon">🏢</div>
-                    <h3 class="specialty-title">Direito Empresarial</h3>
-                    <p class="specialty-description">
-                        Assessoria completa para empresas, desde constituição até fusões e aquisições. 
-                        Contratos complexos, compliance e governança corporativa.
+
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏛</div>
+                    <h3 class="service-title">Direito Empresarial</h3>
+                    <p class="service-description">
+                        Estruturação societária complexa, governança corporativa, fusões e aquisições, 
+                        contratos estratégicos e compliance empresarial de alta performance.
                     </p>
                 </div>
-                <div class="specialty-card reveal">
-                    <div class="specialty-icon">⚖</div>
-                    <h3 class="specialty-title">Litigation & Arbitragem</h3>
-                    <p class="specialty-description">
-                        Representação em litígios complexos e procedimentos arbitrais. 
-                        Estratégia processual avançada e resolução eficiente de conflitos.
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">⚔</div>
+                    <h3 class="service-title">Litigation Premium</h3>
+                    <p class="service-description">
+                        Contencioso estratégico, arbitragem internacional, mediação avançada e 
+                        defesa judicial em casos de alta complexidade e valor.
                     </p>
                 </div>
-                <div class="specialty-card reveal">
-                    <div class="specialty-icon">🛡</div>
-                    <h3 class="specialty-title">Direito Tributário</h3>
-                    <p class="specialty-description">
-                        Planejamento tributário estratégico, defesas fiscais e estruturação 
-                        de operações com foco na otimização da carga tributária.
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">📊</div>
+                    <h3 class="service-title">Consultoria Tributária</h3>
+                    <p class="service-description">
+                        Planejamento tributário estratégico, estruturação fiscal otimizada, 
+                        defesas especializadas e compliance tributário preventivo.
                     </p>
                 </div>
-                <div class="specialty-card reveal">
-                    <div class="specialty-icon">⚙</div>
-                    <h3 class="specialty-title">Direito Trabalhista</h3>
-                    <p class="specialty-description">
-                        Consultoria preventiva e contenciosa em relações de trabalho. 
-                        Reestruturações, compliance trabalhista e negociações coletivas.
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🌐</div>
+                    <h3 class="service-title">Direito Digital</h3>
+                    <p class="service-description">
+                        LGPD, cibersegurança jurídica, propriedade intelectual digital, 
+                        contratos tecnológicos e proteção de dados empresariais.
                     </p>
                 </div>
-                <div class="specialty-card reveal">
-                    <div class="specialty-icon">🏠</div>
-                    <h3 class="specialty-title">Direito Imobiliário</h3>
-                    <p class="specialty-description">
-                        Transações imobiliárias complexas, incorporações, desenvolvimento 
-                        urbano e regularização de propriedades.
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏢</div>
+                    <h3 class="service-title">Direito Imobiliário</h3>
+                    <p class="service-description">
+                        Desenvolvimento imobiliário, incorporações complexas, transações 
+                        de alto valor e regularização de propriedades empresariais.
                     </p>
                 </div>
-                <div class="specialty-card reveal">
-                    <div class="specialty-icon">👨‍👩‍👧‍👦</div>
-                    <h3 class="specialty-title">Direito de Família</h3>
-                    <p class="specialty-description">
-                        Assessoria sensível e estratégica em questões familiares. 
-                        Separações, inventários e planejamento sucessório.
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">⚙</div>
+                    <h3 class="service-title">Direito Trabalhista</h3>
+                    <p class="service-description">
+                        Consultoria preventiva especializada, compliance trabalhista, 
+                        reestruturações organizacionais e defesa em questões laborais.
                     </p>
                 </div>
             </div>
@@ -1504,133 +1460,61 @@
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="team section">
+    <section id="team" class="section team">
+        <div class="section-overlay"></div>
         <div class="container">
-            <div class="section-header reveal">
-                <div class="section-badge mono">Expertise · Reconhecida</div>
-                <h2 class="section-title display-lg">Equipe de especialistas</h2>
+            <div class="section-header fade-in">
+                <div class="section-eyebrow">Liderança Jurídica</div>
+                <h2 class="section-title display-2 serif">Expertise reconhecida globalmente</h2>
                 <p class="section-description">
-                    Nossos advogados combinam formação sólida, experiência prática e 
-                    especialização técnica para entregar excelência jurídica.
+                    Profissionais com formação de elite em instituições de prestígio mundial 
+                    e experiência comprovada em grandes escritórios internacionais.
                 </p>
             </div>
-            <div class="team-grid">
-                <div class="team-card reveal">
-                    <div class="team-image">
-                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Ricardo Silva">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Dr. Ricardo Silva</h3>
-                        <p class="team-role">Sócio Fundador & Managing Partner</p>
-                        <p class="team-bio">
-                            Mestre em Direito Empresarial pela USP, especialista em M&A com mais de 25 anos 
-                            de experiência. Reconhecido pelas principais publicações jurídicas do país.
-                        </p>
-                    </div>
-                </div>
-                <div class="team-card reveal">
-                    <div class="team-image">
-                        <img src="https://images.unsplash.com/photo-1594736797933-d0f02d2d7b4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dra. Marina Oliveira">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Dra. Marina Oliveira</h3>
-                        <p class="team-role">Sócia - Litigation Partner</p>
-                        <p class="team-bio">
-                            Doutora em Direito Processual Civil, especialista em litígios complexos 
-                            e arbitragem. Ex-procuradora do Estado com histórico de grandes vitórias.
-                        </p>
-                    </div>
-                </div>
-                <div class="team-card reveal">
-                    <div class="team-image">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Fernando Costa">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Dr. Fernando Costa</h3>
-                        <p class="team-role">Sócio - Tax & Corporate Law</p>
-                        <p class="team-bio">
-                            Especialista em Direito Tributário e Empresarial, com MBA em Finanças. 
-                            Autor de artigos técnicos e palestrante em grandes eventos do setor.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials section">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-badge mono">Resultados · Comprovados</div>
-                <h2 class="section-title display-lg">O que nossos clientes dizem</h2>
-                <p class="section-description">
-                    A confiança e satisfação de nossos clientes refletem nosso compromisso 
-                    com a excelência e resultados consistentes.
-                </p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card reveal">
-                    <p class="testimonial-content">
-                        A expertise do Dr. Ricardo e sua equipe foi fundamental para o sucesso da nossa 
-                        aquisição. Profissionalismo exemplar, estratégia impecável e execução perfeita. 
-                        Recomendo sem reservas.
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">CS</div>
-                        <div class="author-info">
-                            <h4>Carlos Santos</h4>
-                            <p class="author-details">CEO, TechCorp Ltda.</p>
-                            <div class="rating">
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                            </div>
-                        </div>
+            <div class="team-grid">
+                <div class="team-member fade-in">
+                    <div class="team-photo-container">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Eduardo Santos" class="team-photo">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Dr. Eduardo Santos</h3>
+                        <div class="team-role">Managing Partner</div>
+                        <p class="team-bio">
+                            PhD em Direito Empresarial pela Harvard Law School, ex-sócio de White & Case. 
+                            Especialista em M&A internacional com mais de 20 anos liderando operações bilionárias. 
+                            Reconhecido como leading lawyer pelas principais publicações jurídicas globais.
+                        </p>
                     </div>
                 </div>
-                <div class="testimonial-card reveal">
-                    <p class="testimonial-content">
-                        A Dra. Marina conduziu nosso caso com maestria excepcional. Sua estratégia 
-                        processual foi brilhante e o resultado superou nossas expectativas. 
-                        Verdadeira excelência jurídica.
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AM</div>
-                        <div class="author-info">
-                            <h4>Ana Maria</h4>
-                            <p class="author-details">Diretora Jurídica, Grupo Industrial</p>
-                            <div class="rating">
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                            </div>
-                        </div>
+
+                <div class="team-member fade-in">
+                    <div class="team-photo-container">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616c9c75ab3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dra. Isabela Costa" class="team-photo">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Dra. Isabela Costa</h3>
+                        <div class="team-role">Senior Partner - Litigation</div>
+                        <p class="team-bio">
+                            Mestre em Direito Processual pela Oxford University, ex-procuradora federal. 
+                            Especialista em arbitragem internacional e litígios complexos. Conduziu defesas 
+                            em disputas de mais de R$ 10 bilhões com histórico excepcional de vitórias.
+                        </p>
                     </div>
                 </div>
-                <div class="testimonial-card reveal">
-                    <p class="testimonial-content">
-                        O planejamento tributário desenvolvido pelo Dr. Fernando gerou economia 
-                        significativa para nossa empresa. Assessoria técnica de altíssimo nível 
-                        e acompanhamento constante.
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">RL</div>
-                        <div class="author-info">
-                            <h4>Roberto Lima</h4>
-                            <p class="author-details">CFO, Construtora Horizonte</p>
-                            <div class="rating">
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                            </div>
-                        </div>
+
+                <div class="team-member fade-in">
+                    <div class="team-photo-container">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Fernando Lima" class="team-photo">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Dr. Fernando Lima</h3>
+                        <div class="team-role">Senior Partner - Tax & Corporate</div>
+                        <p class="team-bio">
+                            Especialista em Direito Tributário com MBA em Finanças pela Wharton School. 
+                            Ex-consultor da KPMG Tax, desenvolveu estratégias que economizaram centenas de 
+                            milhões para multinacionais em planejamento e contencioso fiscal complexo.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1638,74 +1522,86 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-badge mono">Contato · Direto</div>
-                <h2 class="section-title display-lg">Inicie sua estratégia jurídica</h2>
+    <section id="contact" class="section contact">
+        <div class="container-wide">
+            <div class="section-header fade-in">
+                <div class="section-eyebrow">Contato Estratégico</div>
+                <h2 class="section-title display-2 serif">Vamos discutir seu caso</h2>
                 <p class="section-description">
-                    Entre em contato para discutir como podemos ajudá-lo a alcançar 
-                    seus objetivos com segurança jurídica e resultados excepcionais.
+                    Entre em contato para uma análise estratégica inicial e descubra como 
+                    nossa expertise pode proteger e acelerar seus objetivos empresariais.
                 </p>
             </div>
+
             <div class="contact-grid">
-                <div class="contact-form reveal">
-                    <h3 class="title-xl">Solicitar Consulta</h3>
+                <div class="contact-form-section slide-in-left">
+                    <h3 class="serif" style="font-size: 2rem; margin-bottom: 2rem; color: var(--text-primary);">Solicitar Consulta Premium</h3>
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name" class="form-label mono">Nome Completo</label>
+                            <label for="name" class="form-label">Nome Completo</label>
                             <input type="text" id="name" name="name" class="form-input" required>
                         </div>
                         <div class="form-group">
-                            <label for="email" class="form-label mono">E-mail</label>
+                            <label for="email" class="form-label">E-mail Corporativo</label>
                             <input type="email" id="email" name="email" class="form-input" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone" class="form-label mono">Telefone</label>
+                            <label for="company" class="form-label">Empresa</label>
+                            <input type="text" id="company" name="company" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Telefone</label>
                             <input type="tel" id="phone" name="phone" class="form-input" required>
                         </div>
                         <div class="form-group">
-                            <label for="message" class="form-label mono">Descrição do Caso</label>
-                            <textarea id="message" name="message" class="form-input form-textarea" 
-                                placeholder="Descreva brevemente sua necessidade jurídica..." required></textarea>
+                            <label for="message" class="form-label">Descrição Estratégica do Caso</label>
+                            <textarea id="message" name="message" class="form-input" rows="4" 
+                                placeholder="Descreva sua necessidade jurídica e objetivos estratégicos..." required></textarea>
                         </div>
-                        <button type="submit" class="btn-primary">
-                            <span>Enviar Solicitação</span>
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                            </svg>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            Agendar Consulta Estratégica
+                            <span>→</span>
                         </button>
                     </form>
                 </div>
-                <div class="contact-info reveal">
-                    <h3 class="title-xl">Escritório Principal</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-details">
-                            <h4>Endereço</h4>
-                            <p>Av. Epitácio Pessoa, 2025 - Torre Executiva<br>João Pessoa - PB, 58040-000</p>
-                        </div>
+
+                <div class="contact-info-section slide-in-right">
+                    <h3 class="serif" style="font-size: 2rem; margin-bottom: 3rem;">Escritório Principal</h3>
+                    
+                    <div class="contact-item" data-icon="📍">
+                        <h4>Endereço Premium</h4>
+                        <p>
+                            Av. Faria Lima, 3500 - Torre Norte<br>
+                            33º andar - Itaim Bibi<br>
+                            São Paulo - SP, 04538-132
+                        </p>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div class="contact-details">
-                            <h4>Telefones</h4>
-                            <p>(83) 3025-2025<br>(83) 99925-2025</p>
-                        </div>
+
+                    <div class="contact-item" data-icon="📞">
+                        <h4>Contato Direto</h4>
+                        <p>
+                            +55 (11) 3500-2025<br>
+                            +55 (11) 99500-2025<br>
+                            Emergências 24h: +55 (11) 99999-0025
+                        </p>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">✉</div>
-                        <div class="contact-details">
-                            <h4>E-mails</h4>
-                            <p>contato@silvaassociados.adv.br<br>consultas@silvaassociados.adv.br</p>
-                        </div>
+
+                    <div class="contact-item" data-icon="✉">
+                        <h4>E-mail Executivo</h4>
+                        <p>
+                            contato@tribunaldigital.adv.br<br>
+                            partners@tribunaldigital.adv.br<br>
+                            emergencia@tribunaldigital.adv.br
+                        </p>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">⏱</div>
-                        <div class="contact-details">
-                            <h4>Horário de Atendimento</h4>
-                            <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
-                        </div>
+
+                    <div class="contact-item" data-icon="⏰">
+                        <h4>Atendimento</h4>
+                        <p>
+                            Segunda a Sexta: 8h às 20h<br>
+                            Sábado: 9h às 14h<br>
+                            Domingos: Emergências via WhatsApp
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1713,135 +1609,83 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>Silva & Associados</h3>
-                    <p>
-                        Escritório de advocacia especializado em soluções jurídicas estratégicas, 
-                        combinando tradição, inovação e excelência para entregar resultados excepcionais.
-                    </p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">LI</a>
-                        <a href="#" class="social-link">FB</a>
-                        <a href="#" class="social-link">IG</a>
-                        <a href="#" class="social-link">YT</a>
+            <div class="footer-content">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <h3>Tribunal Digital</h3>
+                        <p>
+                            Escritório de advocacia premium especializado em direito empresarial estratégico. 
+                            Combinamos tradição jurídica, expertise internacional e inovação tecnológica 
+                            para entregar resultados excepcionais que protegem e aceleram o crescimento 
+                            dos nossos clientes no mercado global.
+                        </p>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4>Navegação</h4>
+                        <ul class="footer-links">
+                            <li><a href="#home">Início</a></li>
+                            <li><a href="#about">Sobre</a></li>
+                            <li><a href="#services">Serviços</a></li>
+                            <li><a href="#team">Equipe</a></li>
+                            <li><a href="#contact">Contato</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4>Especialidades</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Direito Empresarial</a></li>
+                            <li><a href="#">Litigation Premium</a></li>
+                            <li><a href="#">Consultoria Tributária</a></li>
+                            <li><a href="#">Direito Digital</a></li>
+                            <li><a href="#">Direito Imobiliário</a></li>
+                            <li><a href="#">Direito Trabalhista</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4>Contato</h4>
+                        <ul class="footer-links">
+                            <li>Av. Faria Lima, 3500 - Torre Norte</li>
+                            <li>São Paulo - SP, Brasil</li>
+                            <li>+55 (11) 3500-2025</li>
+                            <li>contato@tribunaldigital.adv.br</li>
+                            <li>www.tribunaldigital.adv.br</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Navegação</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">Início</a></li>
-                        <li><a href="#about">Sobre</a></li>
-                        <li><a href="#specialties">Áreas de Atuação</a></li>
-                        <li><a href="#team">Equipe</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Tribunal Digital. Todos os direitos reservados. Advocacia Premium.</p>
                 </div>
-                <div class="footer-section">
-                    <h4>Especialidades</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Direito Empresarial</a></li>
-                        <li><a href="#">Litigation</a></li>
-                        <li><a href="#">Direito Tributário</a></li>
-                        <li><a href="#">Direito Trabalhista</a></li>
-                        <li><a href="#">Direito Imobiliário</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contato</h4>
-                    <ul class="footer-links">
-                        <li>Av. Epitácio Pessoa, 2025</li>
-                        <li>João Pessoa - PB</li>
-                        <li>(83) 3025-2025</li>
-                        <li>contato@silvaassociados.adv.br</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Silva & Associados. Todos os direitos reservados. Advocacia de Vanguarda.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Loading completion
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.body.classList.remove('loading');
-            }, 1000);
-        });
-
-        // Header scroll effects
-        const header = document.querySelector('header');
-        let lastScroll = 0;
-
+        // Header scroll effect
+        const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
+            if (window.scrollY > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
-            
-            lastScroll = currentScroll;
         });
 
-        // Scroll progress indicator
-        const scrollProgress = document.querySelector('.scroll-progress');
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('nav');
         
-        window.addEventListener('scroll', () => {
-            const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            scrollProgress.style.width = scrolled + '%';
-        });
-
-        // Mobile menu functionality
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav ul');
-        const menuSpans = document.querySelectorAll('.menu-icon span');
-
-        menuToggle.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', () => {
             nav.classList.toggle('active');
-            
-            // Animate menu icon
-            if (nav.classList.contains('active')) {
-                menuSpans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                menuSpans[1].style.opacity = '0';
-                menuSpans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                menuSpans[0].style.transform = 'none';
-                menuSpans[1].style.opacity = '1';
-                menuSpans[2].style.transform = 'none';
-            }
+            mobileMenuBtn.textContent = nav.classList.contains('active') ? '✕' : '☰';
         });
 
-        // Smooth scrolling and active nav
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('nav a[href^="#"]');
-
-        function updateActiveNav() {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveNav);
-
-        // Smooth scroll for links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1852,30 +1696,49 @@
                         block: 'start'
                     });
                 }
-                
-                // Close mobile menu
                 nav.classList.remove('active');
-                menuSpans[0].style.transform = 'none';
-                menuSpans[1].style.opacity = '1';
-                menuSpans[2].style.transform = 'none';
+                mobileMenuBtn.textContent = '☰';
             });
         });
 
-        // Reveal animations
+        // Active navigation
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.reveal').forEach(el => {
+        // Observe all animation elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
             observer.observe(el);
         });
 
@@ -1885,22 +1748,38 @@
             
             const formData = new FormData(this);
             const name = formData.get('name');
-            const email = formData.get('email');
-            const phone = formData.get('phone');
-            const message = formData.get('message');
+            const company = formData.get('company');
             
-            if (!name || !email || !phone || !message) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-                return;
-            }
+            // Create a more sophisticated success message
+            const message = `Obrigado, ${name}! Sua solicitação de consulta estratégica foi enviada com sucesso. ` +
+                           `Nossa equipe de partners analisará o caso de ${company} e entrará em contato em até 24 horas ` +
+                           `para agendar uma reunião presencial em nosso escritório na Faria Lima.`;
             
-            // Simulate submission
-            alert(`Obrigado, ${name}! Sua solicitação foi enviada com sucesso. Nossa equipe jurídica entrará em contato em breve para agendar sua consulta.`);
+            alert(message);
             this.reset();
         });
 
-        // Initialize
-        updateActiveNav();
+        // Enhanced logo hover effect
+        const logo = document.querySelector('.logo');
+        logo.addEventListener('mouseenter', () => {
+            logo.style.transform = 'scale(1.05)';
+        });
+        
+        logo.addEventListener('mouseleave', () => {
+            logo.style.transform = 'scale(1)';
+        });
+
+        // Parallax effect for section overlays
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.section-overlay');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+            });
+        });
     </script>
 </body>
 </html>
