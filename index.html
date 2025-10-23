@@ -4,955 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tribunal Digital · Advocacia Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --white: #FFFFFF;
-            --ivory: #FDFBF7;
-            --beige: #F5F1E8;
-            --warm-beige: #E8DCC8;
-            --gold: #D4AF37;
-            --dark-gold: #B8941F;
-            --charcoal: #2C2C2C;
-            --black: #000000;
-            
-            --ease-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
-            --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--charcoal);
-            background: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .serif {
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* ========== HEADER ========== */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            transition: all 0.3s var(--ease-smooth);
-        }
-
-        .header.scrolled {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 2rem;
-            position: relative;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            color: var(--black);
-        }
-
-        .logo-svg {
-            width: 50px;
-            height: 50px;
-        }
-
-        .logo-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--charcoal);
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            transition: color 0.3s var(--ease-smooth);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.3s var(--ease-smooth);
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--charcoal);
-        }
-
-        /* ========== HERO SECTION ========== */
-        .hero {
-            min-height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            background: var(--black);
-        }
-
-        .hero-bg-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.15;
-        }
-
-        .hero-carousel {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s var(--ease-smooth);
-        }
-
-        .hero-slide.active {
-            opacity: 0.5;
-        }
-
-        .hero-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(1.2);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            color: var(--white);
-            max-width: 800px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: rgba(212, 175, 55, 0.2);
-            border: 1px solid var(--gold);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        .hero-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-        }
-
-        .hero-title .gold {
-            color: var(--gold);
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            line-height: 1.8;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            max-width: 600px;
-        }
-
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.25rem 2.5rem;
-            background: var(--gold);
-            color: var(--black);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s var(--ease-smooth);
-            border: 2px solid var(--gold);
-        }
-
-        .hero-cta:hover {
-            background: transparent;
-            color: var(--gold);
-            transform: translateY(-2px);
-        }
-
-        /* ========== SECTION BASE ========== */
-        .section {
-            padding: 8rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-bg-svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.03;
-            pointer-events: none;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .section-eyebrow {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--gold);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            color: var(--black);
-            margin-bottom: 1.5rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.15rem;
-            color: var(--charcoal);
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.8;
-        }
-
-        /* ========== PROBLEMS SECTION ========== */
-        .problems {
-            background: linear-gradient(135deg, var(--ivory) 0%, var(--beige) 100%);
-        }
-
-        .problems-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .problem-card {
-            background: var(--white);
-            padding: 3rem 2.5rem;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            position: relative;
-            transition: all 0.4s var(--ease-smooth);
-        }
-
-        .problem-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
-            background: var(--gold);
-            transition: height 0.4s var(--ease-smooth);
-        }
-
-        .problem-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .problem-card:hover::before {
-            height: 100%;
-        }
-
-        .problem-icon-container {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 2rem;
-        }
-
-        .problem-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--black);
-        }
-
-        .problem-text {
-            color: var(--charcoal);
-            line-height: 1.8;
-            opacity: 0.85;
-        }
-
-        /* ========== BENEFITS SECTION ========== */
-        .benefits {
-            background: var(--white);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
-        }
-
-        .benefit-card {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: var(--ivory);
-            border: 2px solid transparent;
-            transition: all 0.4s var(--ease-smooth);
-            position: relative;
-        }
-
-        .benefit-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 2px solid var(--gold);
-            transform: scale(0.95);
-            opacity: 0;
-            transition: all 0.4s var(--ease-smooth);
-        }
-
-        .benefit-card:hover {
-            background: var(--white);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
-        }
-
-        .benefit-card:hover::after {
-            transform: scale(1);
-            opacity: 1;
-        }
-
-        .benefit-icon-container {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 2rem;
-        }
-
-        .benefit-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--black);
-        }
-
-        .benefit-text {
-            color: var(--charcoal);
-            line-height: 1.7;
-            opacity: 0.85;
-        }
-
-        /* ========== ABOUT SECTION ========== */
-        .about {
-            background: linear-gradient(135deg, var(--beige) 0%, var(--warm-beige) 100%);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .about-text-content h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--black);
-        }
-
-        .about-text-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--charcoal);
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .stat-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--gold);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--charcoal);
-            opacity: 0.7;
-        }
-
-        .about-visual-container {
-            position: relative;
-            width: 100%;
-            height: 500px;
-        }
-
-        /* ========== BLOG SECTION ========== */
-        .blog {
-            background: var(--white);
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-        }
-
-        .blog-card {
-            background: var(--ivory);
-            overflow: hidden;
-            transition: all 0.4s var(--ease-smooth);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .blog-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.4s var(--ease-smooth);
-        }
-
-        .blog-card:hover .blog-image {
-            transform: scale(1.05);
-        }
-
-        .blog-content {
-            padding: 2.5rem;
-        }
-
-        .blog-category {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .blog-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--black);
-        }
-
-        .blog-excerpt {
-            color: var(--charcoal);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            opacity: 0.85;
-        }
-
-        .blog-link {
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s var(--ease-smooth);
-        }
-
-        .blog-link:hover {
-            gap: 1rem;
-        }
-
-        /* ========== TESTIMONIALS SECTION ========== */
-        .testimonials {
-            background: linear-gradient(135deg, var(--black) 0%, var(--charcoal) 100%);
-            color: var(--white);
-        }
-
-        .testimonials .section-eyebrow {
-            color: var(--gold);
-        }
-
-        .testimonials .section-title {
-            color: var(--white);
-        }
-
-        .testimonials .section-subtitle {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            position: relative;
-            transition: all 0.4s var(--ease-smooth);
-        }
-
-        .testimonial-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-5px);
-            border-color: var(--gold);
-        }
-
-        .testimonial-quote-icon {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 2rem;
-        }
-
-        .testimonial-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            font-style: italic;
-            opacity: 0.9;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 2px solid var(--gold);
-        }
-
-        .author-info h4 {
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .author-info p {
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .testimonial-rating {
-            margin-top: 1rem;
-            color: var(--gold);
-            font-size: 1.2rem;
-        }
-
-        /* ========== CONTACT SECTION ========== */
-        .contact {
-            background: var(--ivory);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-        }
-
-        .contact-info h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--black);
-        }
-
-        .contact-item {
-            margin-bottom: 2.5rem;
-            padding-left: 4rem;
-            position: relative;
-        }
-
-        .contact-icon-container {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 50px;
-            height: 50px;
-        }
-
-        .contact-item h4 {
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--black);
-        }
-
-        .contact-item p {
-            color: var(--charcoal);
-            opacity: 0.85;
-        }
-
-        .contact-form {
-            background: var(--white);
-            padding: 3rem;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .form-group {
-            margin-bottom: 2rem;
-        }
-
-        .form-label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--charcoal);
-        }
-
-        .form-input,
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid rgba(212, 175, 55, 0.2);
-            background: var(--ivory);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s var(--ease-smooth);
-        }
-
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-            background: var(--white);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .form-button {
-            width: 100%;
-            padding: 1.25rem;
-            background: var(--black);
-            color: var(--white);
-            border: 2px solid var(--black);
-            font-weight: 600;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s var(--ease-smooth);
-        }
-
-        .form-button:hover {
-            background: transparent;
-            color: var(--black);
-        }
-
-        /* ========== FAQ SECTION ========== */
-        .faq {
-            background: var(--white);
-        }
-
-        .faq-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: var(--ivory);
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            overflow: hidden;
-        }
-
-        .faq-question {
-            width: 100%;
-            padding: 2rem;
-            background: none;
-            border: none;
-            text-align: left;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--black);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s var(--ease-smooth);
-        }
-
-        .faq-question:hover {
-            color: var(--gold);
-        }
-
-        .faq-icon-container {
-            width: 30px;
-            height: 30px;
-            flex-shrink: 0;
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s var(--ease-smooth);
-        }
-
-        .faq-answer-content {
-            padding: 0 2rem 2rem 2rem;
-            color: var(--charcoal);
-            line-height: 1.8;
-            opacity: 0.85;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-        }
-
-        /* ========== FOOTER ========== */
-        .footer {
-            background: var(--black);
-            color: var(--white);
-            padding: 5rem 0 2rem;
-            position: relative;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-brand h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-brand p {
-            line-height: 1.8;
-            opacity: 0.8;
-        }
-
-        .footer-section h4 {
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.95rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: all 0.3s var(--ease-smooth);
-            display: inline-block;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-            transform: translateX(5px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            opacity: 0.7;
-        }
-
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 1024px) {
-            .hero-content {
-                max-width: 600px;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                display: none;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .section {
-                padding: 5rem 0;
-            }
-
-            .hero-title {
-                font-size: 3rem;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .problems-grid,
-            .benefits-grid,
-            .blog-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- HEADER -->
@@ -960,10 +13,11 @@
         <div class="container">
             <div class="header-content">
                 <a href="#home" class="logo-container">
-                    <svg class="logo-svg" viewBox="0 0 50 50" fill="none">
-                        <circle cx="25" cy="25" r="23" stroke="#D4AF37" stroke-width="2" fill="#000"/>
-                        <path d="M25 15 L20 28 L30 28 Z" fill="#D4AF37"/>
-                        <rect x="23" y="28" width="4" height="7" fill="#D4AF37"/>
+                    <svg class="logo-svg" viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="22" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+                        <path d="M24 14 L20 26 L28 26 Z" fill="#C9A961"/>
+                        <rect x="22.5" y="26" width="3" height="8" fill="#C9A961"/>
+                        <line x1="16" y1="34" x2="32" y2="34" stroke="#C9A961" stroke-width="1.5"/>
                     </svg>
                     <span class="logo-text">Tribunal Digital</span>
                 </a>
@@ -981,7 +35,7 @@
 
     <!-- HERO -->
     <section id="home" class="hero">
-        <canvas class="hero-bg-canvas" id="heroCanvas"></canvas>
+        <canvas class="hero-animation" id="heroCanvas"></canvas>
         <div class="hero-carousel">
             <div class="hero-slide active">
                 <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80" alt="Advocacia Premium">
@@ -1014,126 +68,164 @@
 
     <!-- PROBLEMS -->
     <section class="section problems">
-        <svg class="section-bg-svg" id="problemsSvg"></svg>
+        <canvas class="section-animation" id="problemsCanvas"></canvas>
         <div class="container">
             <div class="section-header">
                 <div class="section-eyebrow">Desafios Jurídicos</div>
                 <h2 class="section-title">Problemas que nossos clientes enfrentam</h2>
-               
             </div>
-            <div class="problems-grid">
-                <div class="problem-card">
-                    <div class="problem-icon-container">
-                        <svg viewBox="0 0 70 70" fill="none">
-                            <circle cx="35" cy="35" r="33" stroke="#D4AF37" stroke-width="2" opacity="0.3"/>
-                            <path d="M35 15 L35 45 M20 30 L50 30" stroke="#2C2C2C" stroke-width="3" stroke-linecap="round"/>
-                            <circle cx="35" cy="50" r="3" fill="#D4AF37"/>
-                        </svg>
+            <div class="carousel-wrapper">
+                <div class="problems-grid carousel-container" id="problemsCarousel">
+                    <div class="problem-card">
+                        <div class="problem-icon-container">
+                            <svg viewBox="0 0 70 70" fill="none">
+                                <path d="M35 10 L45 25 L60 25 L50 35 L55 50 L35 40 L15 50 L20 35 L10 25 L25 25 Z" 
+                                      stroke="#C9A961" stroke-width="1.5" fill="none"/>
+                                <path d="M25 35 L35 40 L45 35 M30 43 L35 45 L40 43" 
+                                      stroke="#2C2C2C" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="problem-title">Processos Trabalhistas Recorrentes</h3>
+                        <p class="problem-text">
+                            Passivos trabalhistas acumulados, gestão inadequada de demissões e falta de 
+                            compliance interno geram custos imprevistos e prejudicam a reputação empresarial.
+                        </p>
                     </div>
-                    <h3 class="problem-title">Processos Trabalhistas Recorrentes</h3>
-                    <p class="problem-text">
-                        Passivos trabalhistas acumulados, gestão inadequada de demissões e falta de 
-                        compliance interno geram custos imprevistos e prejudicam a reputação empresarial.
-                    </p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon-container">
-                        <svg viewBox="0 0 70 70" fill="none">
-                            <rect x="10" y="20" width="50" height="35" stroke="#D4AF37" stroke-width="2" fill="none"/>
-                            <path d="M25 20 L25 10 L45 10 L45 20" stroke="#2C2C2C" stroke-width="2"/>
-                            <line x1="20" y1="30" x2="50" y2="30" stroke="#D4AF37" stroke-width="2"/>
-                        </svg>
+                    <div class="problem-card">
+                        <div class="problem-icon-container">
+                            <svg viewBox="0 0 70 70" fill="none">
+                                <rect x="15" y="20" width="40" height="35" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+                                <path d="M22 20 L22 12 L48 12 L48 20" stroke="#2C2C2C" stroke-width="1.5"/>
+                                <line x1="22" y1="30" x2="48" y2="30" stroke="#C9A961" stroke-width="1.5"/>
+                                <line x1="22" y1="38" x2="42" y2="38" stroke="#C9A961" stroke-width="1"/>
+                                <line x1="22" y1="45" x2="38" y2="45" stroke="#C9A961" stroke-width="1"/>
+                                <circle cx="52" cy="50" r="8" fill="#2C2C2C"/>
+                                <path d="M52 46 L52 54 M48 50 L56 50" stroke="#C9A961" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="problem-title">Contratos Mal Elaborados</h3>
+                        <p class="problem-text">
+                            Contratos genéricos sem cláusulas de proteção adequadas expõem a empresa a 
+                            disputas judiciais prolongadas, prejuízos financeiros e perda de oportunidades.
+                        </p>
                     </div>
-                    <h3 class="problem-title">Contratos Mal Elaborados</h3>
-                    <p class="problem-text">
-                        Contratos genéricos sem cláusulas de proteção adequadas expõem a empresa a 
-                        disputas judiciais prolongadas, prejuízos financeiros e perda de oportunidades.
-                    </p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon-container">
-                        <svg viewBox="0 0 70 70" fill="none">
-                            <circle cx="35" cy="35" r="25" stroke="#D4AF37" stroke-width="2" fill="none"/>
-                            <path d="M35 20 L35 35 L45 40" stroke="#2C2C2C" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
+                    <div class="problem-card">
+                        <div class="problem-icon-container">
+                            <svg viewBox="0 0 70 70" fill="none">
+                                <circle cx="35" cy="35" r="24" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+                                <path d="M35 20 L35 35 L46 42" stroke="#2C2C2C" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M30 10 L35 5 L40 10" stroke="#C9A961" stroke-width="1.5" 
+                                      stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                <circle cx="35" cy="35" r="3" fill="#2C2C2C"/>
+                            </svg>
+                        </div>
+                        <h3 class="problem-title">Falta de Planejamento Preventivo</h3>
+                        <p class="problem-text">
+                            Ausência de assessoria jurídica estratégica leva a decisões reativas e custosas, 
+                            com multas regulatórias e crises que poderiam ter sido evitadas.
+                        </p>
                     </div>
-                    <h3 class="problem-title">Falta de Planejamento Preventivo</h3>
-                    <p class="problem-text">
-                        Ausência de assessoria jurídica estratégica leva a decisões reativas e custosas, 
-                        com multas regulatórias e crises que poderiam ter sido evitadas.
-                    </p>
                 </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn carousel-prev" data-carousel="problemsCarousel">‹</button>
+                    <button class="carousel-btn carousel-next" data-carousel="problemsCarousel">›</button>
+                </div>
+                <div class="carousel-indicators" data-carousel="problemsCarousel"></div>
             </div>
         </div>
     </section>
 
     <!-- BENEFITS -->
     <section id="beneficios" class="section benefits">
-        <svg class="section-bg-svg" id="benefitsSvg"></svg>
+        <canvas class="section-animation" id="benefitsCanvas"></canvas>
         <div class="container">
             <div class="section-header">
                 <div class="section-eyebrow">Nossos Diferenciais</div>
                 <h2 class="section-title">Por que escolher o Tribunal Digital</h2>
             </div>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon-container">
-                        <svg viewBox="0 0 80 80" fill="none">
-                            <path d="M40 10 L50 30 L70 32 L55 47 L58 67 L40 56 L22 67 L25 47 L10 32 L30 30 Z" stroke="#D4AF37" stroke-width="2" fill="none"/>
-                        </svg>
+            <div class="carousel-wrapper">
+                <div class="benefits-grid carousel-container" id="benefitsCarousel">
+                    <div class="benefit-card">
+                        <div class="benefit-icon-container">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <path d="M40 10 L48 30 L70 32 L56 46 L60 68 L40 56 L20 68 L24 46 L10 32 L32 30 Z" 
+                                      stroke="#C9A961" stroke-width="2" fill="none"/>
+                                <circle cx="40" cy="40" r="12" stroke="#2C2C2C" stroke-width="1.5" fill="none"/>
+                                <path d="M35 40 L38 43 L45 36" stroke="#C9A961" stroke-width="2" 
+                                      stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Expertise Reconhecida</h3>
+                        <p class="benefit-text">
+                            Equipe com formação em Harvard, Oxford e USP, atuando há mais de 15 anos 
+                            em grandes escritórios internacionais.
+                        </p>
                     </div>
-                    <h3 class="benefit-title">Expertise Reconhecida</h3>
-                    <p class="benefit-text">
-                        Equipe com formação em Harvard, Oxford e USP, atuando há mais de 15 anos 
-                        em grandes escritórios internacionais.
-                    </p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon-container">
-                        <svg viewBox="0 0 80 80" fill="none">
-                            <rect x="15" y="20" width="50" height="40" stroke="#D4AF37" stroke-width="2" fill="none"/>
-                            <path d="M25 35 L35 45 L55 25" stroke="#D4AF37" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                        </svg>
+                    <div class="benefit-card">
+                        <div class="benefit-icon-container">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <path d="M40 15 L52 28 L65 30 L52.5 42.5 L55 55 L40 48 L25 55 L27.5 42.5 L15 30 L28 28 Z" 
+                                      stroke="#C9A961" stroke-width="2" fill="none"/>
+                                <rect x="30" y="35" width="20" height="25" stroke="#2C2C2C" stroke-width="1.5" fill="none"/>
+                                <line x1="35" y1="42" x2="45" y2="42" stroke="#C9A961" stroke-width="1.5"/>
+                                <line x1="35" y1="48" x2="45" y2="48" stroke="#C9A961" stroke-width="1.5"/>
+                                <line x1="35" y1="54" x2="45" y2="54" stroke="#C9A961" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Compliance Proativo</h3>
+                        <p class="benefit-text">
+                            Sistemas de monitoramento jurídico em tempo real que antecipam riscos e 
+                            previnem litígios antes que se tornem problemas.
+                        </p>
                     </div>
-                    <h3 class="benefit-title">Compliance Proativo</h3>
-                    <p class="benefit-text">
-                        Sistemas de monitoramento jurídico em tempo real que antecipam riscos e 
-                        previnem litígios antes que se tornem problemas.
-                    </p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon-container">
-                        <svg viewBox="0 0 80 80" fill="none">
-                            <circle cx="40" cy="40" r="28" stroke="#D4AF37" stroke-width="2" fill="none"/>
-                            <path d="M40 20 L40 40 L55 48" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
+                    <div class="benefit-card">
+                        <div class="benefit-icon-container">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <circle cx="40" cy="40" r="28" stroke="#C9A961" stroke-width="2" fill="none"/>
+                                <path d="M40 20 L40 40 L54 48" stroke="#2C2C2C" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="40" cy="40" r="4" fill="#C9A961"/>
+                                <path d="M40 12 L40 8 M40 72 L40 68 M12 40 L8 40 M72 40 L68 40" 
+                                      stroke="#C9A961" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Atendimento 24/7</h3>
+                        <p class="benefit-text">
+                            Suporte jurídico emergencial disponível a qualquer momento, incluindo 
+                            finais de semana e feriados para questões urgentes.
+                        </p>
                     </div>
-                    <h3 class="benefit-title">Atendimento 24/7</h3>
-                    <p class="benefit-text">
-                        Suporte jurídico emergencial disponível a qualquer momento, incluindo 
-                        finais de semana e feriados para questões urgentes.
-                    </p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon-container">
-                        <svg viewBox="0 0 80 80" fill="none">
-                            <path d="M20 60 L30 35 L40 50 L50 25 L60 40" stroke="#D4AF37" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                            <circle cx="60" cy="40" r="4" fill="#D4AF37"/>
-                        </svg>
+                    <div class="benefit-card">
+                        <div class="benefit-icon-container">
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <path d="M20 60 L30 42 L38 50 L48 30 L58 42 L68 25" 
+                                      stroke="#C9A961" stroke-width="2.5" stroke-linecap="round" 
+                                      stroke-linejoin="round" fill="none"/>
+                                <circle cx="68" cy="25" r="5" fill="#2C2C2C"/>
+                                <circle cx="30" cy="42" r="3" fill="#C9A961"/>
+                                <circle cx="48" cy="30" r="3" fill="#C9A961"/>
+                                <line x1="15" y1="65" x2="75" y2="65" stroke="#2C2C2C" stroke-width="1.5"/>
+                                <line x1="15" y1="15" x2="15" y2="65" stroke="#2C2C2C" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Resultados Mensuráveis</h3>
+                        <p class="benefit-text">
+                            Redução média de 70% em passivos jurídicos e economia de milhões em 
+                            litígios evitados através de estratégia preventiva.
+                        </p>
                     </div>
-                    <h3 class="benefit-title">Resultados Mensuráveis</h3>
-                    <p class="benefit-text">
-                        Redução média de 70% em passivos jurídicos e economia de milhões em 
-                        litígios evitados através de estratégia preventiva.
-                    </p>
                 </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn carousel-prev" data-carousel="benefitsCarousel">‹</button>
+                    <button class="carousel-btn carousel-next" data-carousel="benefitsCarousel">›</button>
+                </div>
+                <div class="carousel-indicators" data-carousel="benefitsCarousel"></div>
             </div>
         </div>
     </section>
 
     <!-- ABOUT -->
     <section id="sobre" class="section about">
-        <svg class="section-bg-svg" id="aboutSvg"></svg>
+        <canvas class="section-animation" id="aboutCanvas"></canvas>
         <div class="container">
             <div class="section-header">
                 <div class="section-eyebrow">Sobre Nós</div>
@@ -1152,12 +244,9 @@
                         tributário, trabalhista e digital, com consultores de negócios e analistas de 
                         dados, criando soluções jurídicas que vão além do cumprimento legal.
                     </p>
-                    
                 </div>
                 <div class="about-visual-container">
-                    <svg viewBox="0 0 400 500" fill="none" id="aboutVisualSvg">
-                        <!-- Animated timeline -->
-                    </svg>
+                    <canvas id="aboutVisualCanvas"></canvas>
                 </div>
             </div>
         </div>
@@ -1165,56 +254,69 @@
 
     <!-- BLOG -->
     <section class="section blog">
-        <svg class="section-bg-svg" id="blogSvg"></svg>
+        <canvas class="section-animation" id="blogCanvas"></canvas>
         <div class="container">
             <div class="section-header">
                 <div class="section-eyebrow">Conhecimento Jurídico</div>
                 <h2 class="section-title">Insights e Tendências</h2>
             </div>
-            <div class="blog-grid">
-                <article class="blog-card">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt="LGPD" class="blog-image">
-                    <div class="blog-content">
-                        <div class="blog-category">Direito Digital</div>
-                        <h3 class="blog-title">LGPD 2025: Novas Diretrizes e Multas</h3>
-                        <p class="blog-excerpt">
-                            A Autoridade Nacional de Proteção de Dados intensifica fiscalização. 
-                            Descubra as mudanças que sua empresa precisa implementar agora.
-                        </p>
-                        <a href="#" class="blog-link">Ler artigo completo →</a>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" alt="Reforma Tributária" class="blog-image">
-                    <div class="blog-content">
-                        <div class="blog-category">Tributário</div>
-                        <h3 class="blog-title">Reforma Tributária: Impactos Práticos</h3>
-                        <p class="blog-excerpt">
-                            Análise detalhada das mudanças tributárias e estratégias para 
-                            minimizar impactos e maximizar oportunidades fiscais.
-                        </p>
-                        <a href="#" class="blog-link">Ler artigo completo →</a>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="Contratos" class="blog-image">
-                    <div class="blog-content">
-                        <div class="blog-category">Empresarial</div>
-                        <h3 class="blog-title">Cláusulas Essenciais em Contratos B2B</h3>
-                        <p class="blog-excerpt">
-                            As 10 cláusulas que todo empresário deve exigir em contratos 
-                            comerciais para proteger seu negócio de disputas judiciais.
-                        </p>
-                        <a href="#" class="blog-link">Ler artigo completo →</a>
-                    </div>
-                </article>
+            <div class="carousel-wrapper">
+                <div class="blog-grid carousel-container" id="blogCarousel">
+                    <article class="blog-card">
+                        <div class="blog-image-container">
+                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt="LGPD" class="blog-image">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">Direito Digital</div>
+                            <h3 class="blog-title">LGPD 2025: Novas Diretrizes e Multas</h3>
+                            <p class="blog-excerpt">
+                                A Autoridade Nacional de Proteção de Dados intensifica fiscalização. 
+                                Descubra as mudanças que sua empresa precisa implementar agora.
+                            </p>
+                            <a href="#" class="blog-link">Ler artigo completo →</a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-image-container">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" alt="Reforma Tributária" class="blog-image">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">Tributário</div>
+                            <h3 class="blog-title">Reforma Tributária: Impactos Práticos</h3>
+                            <p class="blog-excerpt">
+                                Análise detalhada das mudanças tributárias e estratégias para 
+                                minimizar impactos e maximizar oportunidades fiscais.
+                            </p>
+                            <a href="#" class="blog-link">Ler artigo completo →</a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-image-container">
+                            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="Contratos" class="blog-image">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">Empresarial</div>
+                            <h3 class="blog-title">Cláusulas Essenciais em Contratos B2B</h3>
+                            <p class="blog-excerpt">
+                                As 10 cláusulas que todo empresário deve exigir em contratos 
+                                comerciais para proteger seu negócio de disputas judiciais.
+                            </p>
+                            <a href="#" class="blog-link">Ler artigo completo →</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn carousel-prev" data-carousel="blogCarousel">‹</button>
+                    <button class="carousel-btn carousel-next" data-carousel="blogCarousel">›</button>
+                </div>
+                <div class="carousel-indicators" data-carousel="blogCarousel"></div>
             </div>
         </div>
     </section>
 
     <!-- TESTIMONIALS -->
     <section class="section testimonials">
-        <svg class="section-bg-svg" id="testimonialsSvg"></svg>
+        <canvas class="section-animation" id="testimonialsCanvas"></canvas>
         <div class="container">
             <div class="section-header">
                 <div class="section-eyebrow">Depoimentos</div>
@@ -1224,68 +326,78 @@
                     nossa assessoria jurídica estratégica.
                 </p>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <svg class="testimonial-quote-icon" viewBox="0 0 50 50" fill="none">
-                        <path d="M10 30 Q10 15 20 10 L18 15 Q12 18 12 30 Z M30 30 Q30 15 40 10 L38 15 Q32 18 32 30 Z" fill="#D4AF37"/>
-                    </svg>
-                    <p class="testimonial-text">
-                        "O Tribunal Digital não apenas resolveu nossos problemas jurídicos, mas criou 
-                        um sistema preventivo que reduziu nossos custos legais em 60% no primeiro ano. 
-                        A expertise da equipe é incomparável."
-                    </p>
-                    <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" alt="Carlos Mendes" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Carlos Mendes</h4>
-                            <p>CEO, TechStart Solutions</p>
+            <div class="carousel-wrapper">
+                <div class="testimonials-grid carousel-container" id="testimonialsCarousel">
+                    <div class="testimonial-card">
+                        <svg class="testimonial-quote-icon" viewBox="0 0 48 48" fill="none">
+                            <path d="M8 28 Q8 16 16 12 L14 16 Q10 19 10 28 Z M26 28 Q26 16 34 12 L32 16 Q28 19 28 28 Z" 
+                                  fill="#C9A961" opacity="0.4"/>
+                        </svg>
+                        <p class="testimonial-text">
+                            "O Tribunal Digital não apenas resolveu nossos problemas jurídicos, mas criou 
+                            um sistema preventivo que reduziu nossos custos legais em 60% no primeiro ano. 
+                            A expertise da equipe é incomparável."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" alt="Carlos Mendes" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Carlos Mendes</h4>
+                                <p>CEO, TechStart Solutions</p>
+                            </div>
                         </div>
+                        <div class="testimonial-rating">★★★★★</div>
                     </div>
-                    <div class="testimonial-rating">★★★★★</div>
-                </div>
-                <div class="testimonial-card">
-                    <svg class="testimonial-quote-icon" viewBox="0 0 50 50" fill="none">
-                        <path d="M10 30 Q10 15 20 10 L18 15 Q12 18 12 30 Z M30 30 Q30 15 40 10 L38 15 Q32 18 32 30 Z" fill="#D4AF37"/>
-                    </svg>
-                    <p class="testimonial-text">
-                        "Após anos lidando com processos trabalhistas, o Tribunal Digital implementou 
-                        uma estratégia de compliance que zerou nossos passivos. O ROI foi imediato e 
-                        a tranquilidade, inestimável."
-                    </p>
-                    <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80" alt="Marina Silva" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Marina Silva</h4>
-                            <p>Diretora Jurídica, Construtora Horizonte</p>
+                    <div class="testimonial-card">
+                        <svg class="testimonial-quote-icon" viewBox="0 0 48 48" fill="none">
+                            <path d="M8 28 Q8 16 16 12 L14 16 Q10 19 10 28 Z M26 28 Q26 16 34 12 L32 16 Q28 19 28 28 Z" 
+                                  fill="#C9A961" opacity="0.4"/>
+                        </svg>
+                        <p class="testimonial-text">
+                            "Após anos lidando com processos trabalhistas, o Tribunal Digital implementou 
+                            uma estratégia de compliance que zerou nossos passivos. O ROI foi imediato e 
+                            a tranquilidade, inestimável."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80" alt="Marina Silva" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Marina Silva</h4>
+                                <p>Diretora Jurídica, Construtora Horizonte</p>
+                            </div>
                         </div>
+                        <div class="testimonial-rating">★★★★★</div>
                     </div>
-                    <div class="testimonial-rating">★★★★★</div>
-                </div>
-                <div class="testimonial-card">
-                    <svg class="testimonial-quote-icon" viewBox="0 0 50 50" fill="none">
-                        <path d="M10 30 Q10 15 20 10 L18 15 Q12 18 12 30 Z M30 30 Q30 15 40 10 L38 15 Q32 18 32 30 Z" fill="#D4AF37"/>
-                    </svg>
-                    <p class="testimonial-text">
-                        "A assessoria tributária salvou nossa empresa de uma autuação milionária. 
-                        A equipe identificou erros que passaram despercebidos por anos e reestruturou 
-                        completamente nossa operação fiscal."
-                    </p>
-                    <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&q=80" alt="Roberto Costa" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Roberto Costa</h4>
-                            <p>Fundador, Grupo Invest Capital</p>
+                    <div class="testimonial-card">
+                        <svg class="testimonial-quote-icon" viewBox="0 0 48 48" fill="none">
+                            <path d="M8 28 Q8 16 16 12 L14 16 Q10 19 10 28 Z M26 28 Q26 16 34 12 L32 16 Q28 19 28 28 Z" 
+                                  fill="#C9A961" opacity="0.4"/>
+                        </svg>
+                        <p class="testimonial-text">
+                            "A assessoria tributária salvou nossa empresa de uma autuação milionária. 
+                            A equipe identificou erros que passaram despercebidos por anos e reestruturou 
+                            completamente nossa operação fiscal."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&q=80" alt="Roberto Costa" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Roberto Costa</h4>
+                                <p>Fundador, Grupo Invest Capital</p>
+                            </div>
                         </div>
+                        <div class="testimonial-rating">★★★★★</div>
                     </div>
-                    <div class="testimonial-rating">★★★★★</div>
                 </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn carousel-prev" data-carousel="testimonialsCarousel">‹</button>
+                    <button class="carousel-btn carousel-next" data-carousel="testimonialsCarousel">›</button>
+                </div>
+                <div class="carousel-indicators" data-carousel="testimonialsCarousel"></div>
             </div>
         </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contato" class="section contact">
-        <svg class="section-bg-svg" id="contactSvg"></svg>
+        <canvas class="section-animation" id="contactCanvas"></canvas>
         <div class="container">
             <div class="section-header">
                 <div class="section-eyebrow">Entre em Contato</div>
@@ -1300,9 +412,9 @@
                     <h3>Fale Conosco</h3>
                     <div class="contact-item">
                         <div class="contact-icon-container">
-                            <svg viewBox="0 0 50 50" fill="none">
-                                <circle cx="25" cy="25" r="20" stroke="#D4AF37" stroke-width="2"/>
-                                <path d="M25 15 L25 25 L32 30" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+                            <svg viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="16" r="14" stroke="#C9A961" stroke-width="1.5"/>
+                                <path d="M16 8 L16 16 L22 19" stroke="#C9A961" stroke-width="1.5" stroke-linecap="round"/>
                             </svg>
                         </div>
                         <h4>Horário de Atendimento</h4>
@@ -1310,9 +422,9 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon-container">
-                            <svg viewBox="0 0 50 50" fill="none">
-                                <rect x="10" y="15" width="30" height="20" stroke="#D4AF37" stroke-width="2" fill="none"/>
-                                <path d="M10 15 L25 27 L40 15" stroke="#D4AF37" stroke-width="2" fill="none"/>
+                            <svg viewBox="0 0 32 32" fill="none">
+                                <rect x="6" y="10" width="20" height="14" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+                                <path d="M6 10 L16 18 L26 10" stroke="#C9A961" stroke-width="1.5" fill="none"/>
                             </svg>
                         </div>
                         <h4>E-mail</h4>
@@ -1320,9 +432,10 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon-container">
-                            <svg viewBox="0 0 50 50" fill="none">
-                                <path d="M15 18 Q15 12 20 12 L30 12 Q35 12 35 18 L35 32 Q35 38 30 38 L20 38 Q15 38 15 32 Z" stroke="#D4AF37" stroke-width="2" fill="none"/>
-                                <rect x="22" y="33" width="6" height="2" fill="#D4AF37"/>
+                            <svg viewBox="0 0 32 32" fill="none">
+                                <path d="M12 8 Q12 6 14 6 L18 6 Q20 6 20 8 L20 24 Q20 26 18 26 L14 26 Q12 26 12 24 Z" 
+                                      stroke="#C9A961" stroke-width="1.5" fill="none"/>
+                                <rect x="14" y="22" width="4" height="1.5" fill="#C9A961"/>
                             </svg>
                         </div>
                         <h4>Telefone / WhatsApp</h4>
@@ -1372,7 +485,7 @@
 
     <!-- FAQ -->
     <section class="section faq">
-        <svg class="section-bg-svg" id="faqSvg"></svg>
+        <canvas class="section-animation" id="faqCanvas"></canvas>
         <div class="container">
             <div class="section-header">
                 <div class="section-eyebrow">Perguntas Frequentes</div>
@@ -1383,8 +496,8 @@
                     <button class="faq-question">
                         <span>Quanto custa uma consultoria jurídica mensal?</span>
                         <div class="faq-icon-container">
-                            <svg viewBox="0 0 30 30" fill="none">
-                                <path d="M15 10 L15 20 M10 15 L20 15" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+                            <svg viewBox="0 0 32 32" fill="none">
+                                <path d="M16 12 L16 20 M12 16 L20 16" stroke="#C9A961" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </div>
                     </button>
@@ -1400,8 +513,8 @@
                     <button class="faq-question">
                         <span>Vocês atendem empresas de todo o Brasil?</span>
                         <div class="faq-icon-container">
-                            <svg viewBox="0 0 30 30" fill="none">
-                                <path d="M15 10 L15 20 M10 15 L20 15" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+                            <svg viewBox="0 0 32 32" fill="none">
+                                <path d="M16 12 L16 20 M12 16 L20 16" stroke="#C9A961" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </div>
                     </button>
@@ -1417,8 +530,8 @@
                     <button class="faq-question">
                         <span>Qual o tempo médio para resolução de processos?</span>
                         <div class="faq-icon-container">
-                            <svg viewBox="0 0 30 30" fill="none">
-                                <path d="M15 10 L15 20 M10 15 L20 15" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+                            <svg viewBox="0 0 32 32" fill="none">
+                                <path d="M16 12 L16 20 M12 16 L20 16" stroke="#C9A961" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </div>
                     </button>
@@ -1434,8 +547,8 @@
                     <button class="faq-question">
                         <span>Oferecem garantia de resultado?</span>
                         <div class="faq-icon-container">
-                            <svg viewBox="0 0 30 30" fill="none">
-                                <path d="M15 10 L15 20 M10 15 L20 15" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+                            <svg viewBox="0 0 32 32" fill="none">
+                                <path d="M16 12 L16 20 M12 16 L20 16" stroke="#C9A961" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </div>
                     </button>
@@ -1451,8 +564,8 @@
                     <button class="faq-question">
                         <span>Como funciona o atendimento emergencial 24/7?</span>
                         <div class="faq-icon-container">
-                            <svg viewBox="0 0 30 30" fill="none">
-                                <path d="M15 10 L15 20 M10 15 L20 15" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+                            <svg viewBox="0 0 32 32" fill="none">
+                                <path d="M16 12 L16 20 M12 16 L20 16" stroke="#C9A961" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </div>
                     </button>
@@ -1513,370 +626,6 @@
         </div>
     </footer>
 
-    <script>
-        // ========== MOBILE MENU ==========
-        const mobileToggle = document.querySelector('.mobile-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-        });
-
-        // ========== HEADER SCROLL ==========
-        const header = document.querySelector('.header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        // ========== HERO CAROUSEL ==========
-        const slides = document.querySelectorAll('.hero-slide');
-        let currentSlide = 0;
-        
-        setInterval(() => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }, 5000);
-
-        // ========== HERO CANVAS ANIMATION ==========
-        const heroCanvas = document.getElementById('heroCanvas');
-        const heroCtx = heroCanvas.getContext('2d');
-        
-        function resizeHeroCanvas() {
-            heroCanvas.width = heroCanvas.offsetWidth;
-            heroCanvas.height = heroCanvas.offsetHeight;
-        }
-        resizeHeroCanvas();
-        window.addEventListener('resize', resizeHeroCanvas);
-
-        const legalDocs = [];
-        for (let i = 0; i < 15; i++) {
-            legalDocs.push({
-                x: Math.random() * heroCanvas.width,
-                y: Math.random() * heroCanvas.height,
-                size: Math.random() * 40 + 20,
-                speedX: (Math.random() - 0.5) * 0.5,
-                speedY: (Math.random() - 0.5) * 0.5,
-                rotation: Math.random() * Math.PI * 2,
-                rotationSpeed: (Math.random() - 0.5) * 0.02
-            });
-        }
-
-        function animateHero() {
-            heroCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
-            heroCtx.strokeStyle = 'rgba(212, 175, 55, 0.3)';
-            heroCtx.lineWidth = 2;
-
-            legalDocs.forEach(doc => {
-                heroCtx.save();
-                heroCtx.translate(doc.x, doc.y);
-                heroCtx.rotate(doc.rotation);
-                
-                // Document shape
-                heroCtx.beginPath();
-                heroCtx.rect(-doc.size/2, -doc.size/2, doc.size, doc.size * 1.4);
-                heroCtx.stroke();
-                
-                // Lines on document
-                for (let i = 0; i < 3; i++) {
-                    heroCtx.beginPath();
-                    heroCtx.moveTo(-doc.size/3, -doc.size/4 + i * 10);
-                    heroCtx.lineTo(doc.size/3, -doc.size/4 + i * 10);
-                    heroCtx.stroke();
-                }
-                
-                heroCtx.restore();
-
-                doc.x += doc.speedX;
-                doc.y += doc.speedY;
-                doc.rotation += doc.rotationSpeed;
-
-                if (doc.x < -doc.size) doc.x = heroCanvas.width + doc.size;
-                if (doc.x > heroCanvas.width + doc.size) doc.x = -doc.size;
-                if (doc.y < -doc.size) doc.y = heroCanvas.height + doc.size;
-                if (doc.y > heroCanvas.height + doc.size) doc.y = -doc.size;
-            });
-
-            requestAnimationFrame(animateHero);
-        }
-        animateHero();
-
-        // ========== PROBLEMS SVG ANIMATION ==========
-        const problemsSvg = document.getElementById('problemsSvg');
-        problemsSvg.setAttribute('viewBox', '0 0 1200 800');
-        
-        for (let i = 0; i < 20; i++) {
-            const x = Math.random() * 1200;
-            const y = Math.random() * 800;
-            const size = Math.random() * 60 + 30;
-            
-            const knot = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            const d = `M ${x} ${y} Q ${x+size} ${y-size} ${x+size*2} ${y} Q ${x+size} ${y+size} ${x} ${y}`;
-            knot.setAttribute('d', d);
-            knot.setAttribute('fill', 'none');
-            knot.setAttribute('stroke', '#2C2C2C');
-            knot.setAttribute('stroke-width', '2');
-            knot.setAttribute('opacity', '0.1');
-            
-            const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
-            animate.setAttribute('attributeName', 'stroke-dashoffset');
-            animate.setAttribute('from', '200');
-            animate.setAttribute('to', '0');
-            animate.setAttribute('dur', '6s');
-            animate.setAttribute('repeatCount', 'indefinite');
-            
-            knot.appendChild(animate);
-            problemsSvg.appendChild(knot);
-        }
-
-        // ========== BENEFITS SVG ANIMATION ==========
-        const benefitsSvg = document.getElementById('benefitsSvg');
-        benefitsSvg.setAttribute('viewBox', '0 0 1200 800');
-        
-        for (let i = 0; i < 15; i++) {
-            const cx = Math.random() * 1200;
-            const cy = Math.random() * 800;
-            const r = Math.random() * 40 + 20;
-            
-            const shield = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            const d = `M ${cx} ${cy-r} L ${cx+r*0.7} ${cy} L ${cx} ${cy+r*1.5} L ${cx-r*0.7} ${cy} Z`;
-            shield.setAttribute('d', d);
-            shield.setAttribute('fill', 'none');
-            shield.setAttribute('stroke', '#D4AF37');
-            shield.setAttribute('stroke-width', '2');
-            shield.setAttribute('opacity', '0');
-            
-            const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
-            animate.setAttribute('attributeName', 'opacity');
-            animate.setAttribute('values', '0;0.15;0');
-            animate.setAttribute('dur', `${3 + Math.random() * 3}s`);
-            animate.setAttribute('repeatCount', 'indefinite');
-            
-            shield.appendChild(animate);
-            benefitsSvg.appendChild(shield);
-        }
-
-        // ========== ABOUT VISUAL SVG ==========
-        const aboutVisualSvg = document.getElementById('aboutVisualSvg');
-        const years = [2015, 2017, 2019, 2021, 2023, 2025];
-        const events = [
-            'Fundação',
-            '50 Clientes',
-            '100 Clientes',
-            'Expansão Nacional',
-            '200 Clientes',
-            'Líder de Mercado'
-        ];
-
-        years.forEach((year, i) => {
-            const y = 80 + i * 70;
-            const isLeft = i % 2 === 0;
-            const x = isLeft ? 100 : 300;
-            
-            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            circle.setAttribute('cx', '200');
-            circle.setAttribute('cy', y);
-            circle.setAttribute('r', '8');
-            circle.setAttribute('fill', '#D4AF37');
-            
-            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            line.setAttribute('x1', '200');
-            line.setAttribute('y1', y);
-            line.setAttribute('x2', x);
-            line.setAttribute('y2', y);
-            line.setAttribute('stroke', '#D4AF37');
-            line.setAttribute('stroke-width', '2');
-            
-            const text1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            text1.setAttribute('x', x);
-            text1.setAttribute('y', y - 10);
-            text1.setAttribute('fill', '#D4AF37');
-            text1.setAttribute('font-size', '16');
-            text1.setAttribute('font-weight', '700');
-            text1.setAttribute('text-anchor', isLeft ? 'end' : 'start');
-            text1.textContent = year;
-            
-            const text2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            text2.setAttribute('x', x);
-            text2.setAttribute('y', y + 10);
-            text2.setAttribute('fill', '#2C2C2C');
-            text2.setAttribute('font-size', '14');
-            text2.setAttribute('text-anchor', isLeft ? 'end' : 'start');
-            text2.textContent = events[i];
-            
-            aboutVisualSvg.appendChild(circle);
-            aboutVisualSvg.appendChild(line);
-            aboutVisualSvg.appendChild(text1);
-            aboutVisualSvg.appendChild(text2);
-        });
-
-        const mainLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        mainLine.setAttribute('x1', '200');
-        mainLine.setAttribute('y1', '80');
-        mainLine.setAttribute('x2', '200');
-        mainLine.setAttribute('y2', '430');
-        mainLine.setAttribute('stroke', '#D4AF37');
-        mainLine.setAttribute('stroke-width', '3');
-        aboutVisualSvg.insertBefore(mainLine, aboutVisualSvg.firstChild);
-
-        // ========== BLOG SVG ANIMATION ==========
-        const blogSvg = document.getElementById('blogSvg');
-        blogSvg.setAttribute('viewBox', '0 0 1200 800');
-        
-        for (let i = 0; i < 12; i++) {
-            const x = Math.random() * 1200;
-            const y = Math.random() * 800;
-            const size = Math.random() * 50 + 25;
-            
-            const book = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-            book.setAttribute('x', x);
-            book.setAttribute('y', y);
-            book.setAttribute('width', size * 0.7);
-            book.setAttribute('height', size);
-            book.setAttribute('fill', 'none');
-            book.setAttribute('stroke', '#D4AF37');
-            book.setAttribute('stroke-width', '2');
-            book.setAttribute('opacity', '0.08');
-            
-            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            line.setAttribute('x1', x + size * 0.15);
-            line.setAttribute('y1', y);
-            line.setAttribute('x2', x + size * 0.15);
-            line.setAttribute('y2', y + size);
-            line.setAttribute('stroke', '#D4AF37');
-            line.setAttribute('stroke-width', '2');
-            line.setAttribute('opacity', '0.08');
-            
-            blogSvg.appendChild(book);
-            blogSvg.appendChild(line);
-        }
-
-        // ========== TESTIMONIALS SVG ==========
-        const testimonialsSvg = document.getElementById('testimonialsSvg');
-        testimonialsSvg.setAttribute('viewBox', '0 0 1200 800');
-        
-        for (let i = 0; i < 10; i++) {
-            const x = Math.random() * 1200;
-            const y = Math.random() * 800;
-            const size = Math.random() * 30 + 15;
-            
-            for (let j = 0; j < 5; j++) {
-                const star = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-                const points = [];
-                for (let k = 0; k < 10; k++) {
-                    const angle = (k * Math.PI) / 5;
-                    const radius = k % 2 === 0 ? size : size / 2;
-                    points.push(`${x + j * size * 2.5 + radius * Math.sin(angle)},${y + radius * Math.cos(angle)}`);
-                }
-                star.setAttribute('points', points.join(' '));
-                star.setAttribute('fill', '#D4AF37');
-                star.setAttribute('opacity', '0.05');
-                
-                testimonialsSvg.appendChild(star);
-            }
-        }
-
-        // ========== CONTACT SVG ==========
-        const contactSvg = document.getElementById('contactSvg');
-        contactSvg.setAttribute('viewBox', '0 0 1200 800');
-        
-        for (let i = 0; i < 30; i++) {
-            const x1 = Math.random() * 1200;
-            const y1 = Math.random() * 800;
-            const x2 = x1 + (Math.random() - 0.5) * 200;
-            const y2 = y1 + (Math.random() - 0.5) * 200;
-            
-            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            line.setAttribute('x1', x1);
-            line.setAttribute('y1', y1);
-            line.setAttribute('x2', x2);
-            line.setAttribute('y2', y2);
-            line.setAttribute('stroke', '#D4AF37');
-            line.setAttribute('stroke-width', '1');
-            line.setAttribute('opacity', '0.05');
-            
-            contactSvg.appendChild(line);
-            
-            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            circle.setAttribute('cx', x1);
-            circle.setAttribute('cy', y1);
-            circle.setAttribute('r', '3');
-            circle.setAttribute('fill', '#D4AF37');
-            circle.setAttribute('opacity', '0.1');
-            
-            contactSvg.appendChild(circle);
-        }
-
-        // ========== FAQ SVG ==========
-        const faqSvg = document.getElementById('faqSvg');
-        faqSvg.setAttribute('viewBox', '0 0 1200 800');
-        
-        for (let i = 0; i < 15; i++) {
-            const x = Math.random() * 1200;
-            const y = Math.random() * 800;
-            const size = Math.random() * 40 + 20;
-            
-            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            circle.setAttribute('cx', x);
-            circle.setAttribute('cy', y);
-            circle.setAttribute('r', size);
-            circle.setAttribute('fill', 'none');
-            circle.setAttribute('stroke', '#D4AF37');
-            circle.setAttribute('stroke-width', '2');
-            circle.setAttribute('opacity', '0.06');
-            
-            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            text.setAttribute('x', x);
-            text.setAttribute('y', y + size * 0.3);
-            text.setAttribute('fill', '#D4AF37');
-            text.setAttribute('font-size', size);
-            text.setAttribute('font-weight', '700');
-            text.setAttribute('text-anchor', 'middle');
-            text.setAttribute('opacity', '0.08');
-            text.textContent = '?';
-            
-            faqSvg.appendChild(circle);
-            faqSvg.appendChild(text);
-        }
-
-        // ========== FAQ ACCORDION ==========
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                faqItems.forEach(i => i.classList.remove('active'));
-                
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // ========== SMOOTH SCROLL ==========
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    navLinks.classList.remove('active');
-                    mobileToggle.textContent = '☰';
-                }
-            });
-        });
-
-        // ========== FORM SUBMISSION ==========
-        const contactForm = document.querySelector('.contact-form form');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Mensagem enviada com sucesso! Nossa equipe entrará em contato em até 2 horas úteis.');
-            contactForm.reset();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
