@@ -380,15 +380,14 @@ body {
 /* ========== CAROUSEL STYLES ========== */
 .carousel-wrapper {
     position: relative;
-    overflow: hidden;
-    margin: 0 -2rem;
-    padding: 0 2rem;
+    margin: 0 -1.25rem;
+    padding: 0;
+    overflow: visible;
 }
 
 .carousel-container {
     display: flex;
     transition: transform 0.4s var(--ease-smooth);
-    will-change: transform;
 }
 
 .carousel-controls {
@@ -684,7 +683,8 @@ body {
     background: var(--white);
 }
 
-.blog-grid {
+.blog-grid,
+.testimonials-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 3rem;
@@ -1186,205 +1186,80 @@ body {
 }
 
 /* ========== RESPONSIVE ========== */
-@media (max-width: 1024px) {
+
+/* Notebook (992px - 1199px) */
+@media (max-width: 1199px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .about-content {
+        gap: 4rem;
+    }
+
+    .blog-grid,
+    .testimonials-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+}
+
+/* Tablet (768px - 991px) */
+@media (max-width: 991px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .section {
+        padding: 6rem 0;
+    }
+
+    .nav-links {
+        gap: 2rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+    }
+
     .about-content {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 4rem;
+        text-align: center;
+    }
+
+    .about-visual-container {
+        height: 400px;
+        max-width: 500px;
+        margin: 0 auto;
     }
 
     .contact-grid {
         grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .contact-form {
+        padding: 3rem;
     }
 
     .footer-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .about-visual-container {
-        height: 450px;
-        max-width: 600px;
-        margin: 0 auto;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
     }
 }
 
-@media (max-width: 768px) {
-    .section {
-        padding: 5rem 0;
+/* Mobile (<= 767px) */
+@media (max-width: 767px) {
+    body.nav-open {
+        overflow: hidden;
     }
 
-    .mobile-toggle {
-        display: block;
-    }
-
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--white);
-        flex-direction: column;
-        padding: 2rem;
-        gap: 1.5rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        display: none;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .hero-title {
-        font-size: 3rem;
-    }
-
-    .section-title {
-        font-size: 2.5rem;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-
-    .contact-item {
-        padding-left: 4rem;
-    }
-
-    .contact-icon-container {
-        width: 48px;
-        height: 48px;
-    }
-
-    /* ========== MOBILE CAROUSEL STYLES - CORRIGIDO ========== */
-    .carousel-wrapper {
-        margin: 0 -1.25rem;
-        padding: 0;
-        overflow: visible;
-    }
-
-    .problems-grid,
-    .benefits-grid,
-    .blog-grid,
-    .testimonials-grid {
-        display: flex;
-        gap: 0;
-        margin: 0;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    .problems-grid::-webkit-scrollbar,
-    .benefits-grid::-webkit-scrollbar,
-    .blog-grid::-webkit-scrollbar,
-    .testimonials-grid::-webkit-scrollbar {
-        display: none;
-    }
-
-    .carousel-container {
-        padding: 0 1.25rem;
-        display: flex;
-        gap: 1rem;
-    }
-
-    .problem-card,
-    .benefit-card,
-    .blog-card,
-    .testimonial-card {
-        width: calc(100vw - 2.5rem);
-        min-width: calc(100vw - 2.5rem);
-        margin-right: 1rem;
-        scroll-snap-align: center;
-        flex-shrink: 0;
-    }
-
-    .problem-card {
-        padding: 2.5rem 2rem;
-        min-height: 320px;
-    }
-
-    .problem-title {
-        font-size: 1.4rem;
-    }
-
-    .problem-text {
-        font-size: 0.9rem;
-        line-height: 1.7;
-    }
-
-    .benefit-card {
-        padding: 2.5rem 2rem;
-        min-height: 340px;
-    }
-
-    .benefit-title {
-        font-size: 1.3rem;
-    }
-
-    .benefit-text {
-        font-size: 0.9rem;
-    }
-
-    .blog-card {
-        min-height: auto;
-    }
-
-    .blog-image-container {
-        height: 200px;
-    }
-
-    .blog-content {
-        padding: 2rem;
-    }
-
-    .blog-title {
-        font-size: 1.4rem;
-    }
-
-    .blog-excerpt {
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .testimonial-card {
-        padding: 2.5rem 2rem;
-        min-height: 380px;
-    }
-
-    .testimonial-text {
-        font-size: 0.95rem;
-        margin-bottom: 2rem;
-    }
-
-    .testimonial-quote-icon {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 1.5rem;
-    }
-
-    .author-avatar {
-        width: 56px;
-        height: 56px;
-    }
-
-    .carousel-controls {
-        display: flex;
-    }
-
-    .carousel-indicators {
-        display: flex;
-    }
-}
-
-@media (max-width: 480px) {
     .container {
-        padding: 0 1.25rem;
+        padding: 0 1.5rem;
     }
 
-    .hero-title {
-        font-size: 2.5rem;
+    .section {
+        padding: 4rem 0;
     }
 
     .section-header {
@@ -1392,37 +1267,181 @@ body {
     }
 
     .section-title {
-        font-size: 2rem;
-        margin-bottom: 1rem;
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+
+    .header-content {
+        padding: 1rem 0;
+    }
+    
+    .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .logo-svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mobile-toggle {
+        display: block;
+        z-index: 1002;
+        position: relative;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--ivory);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.4s var(--ease-smooth);
+        display: flex;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .hero {
+        min-height: 90vh;
+    }
+
+    .hero-content {
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2.2rem, 10vw, 3rem);
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .hero-cta {
+        padding: 1rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .about-content {
+        text-align: left;
+    }
+
+    .about-visual-container {
+        height: 300px;
+    }
+
+    .contact-item {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .contact-icon-container {
+        position: static;
+        margin: 0 auto 1.5rem;
     }
 
     .contact-form {
         padding: 2.5rem 1.5rem;
     }
 
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+
+    .footer-links a:hover {
+        transform: none;
+    }
+
     .faq-question {
-        padding: 1.75rem 1.5rem;
-        font-size: 1.05rem;
+        padding: 1.5rem;
+        font-size: 1.1rem;
     }
 
     .faq-answer-content {
-        padding: 0 1.5rem 1.75rem 1.5rem;
+        padding: 0 1.5rem 1.5rem;
     }
 
-    /* Ajustes adicionais para carrossel em telas muito pequenas */
+    /* --- MOBILE CAROUSEL FIXES --- */
+    .carousel-wrapper {
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+    }
+
+    .carousel-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* IE 10+ */
+        padding-bottom: 1.5rem; /* Space for scrollbar without affecting layout */
+        margin-bottom: -1.5rem;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
+
+    .problems-grid,
+    .benefits-grid,
+    .blog-grid,
+    .testimonials-grid {
+        display: flex;
+        gap: 1rem;
+        padding: 0 1.5rem; /* Start and end padding */
+    }
+
     .problem-card,
     .benefit-card,
     .blog-card,
     .testimonial-card {
-        width: calc(100vw - 1.5rem);
-        min-width: calc(100vw - 1.5rem);
+        width: calc(100vw - 5rem); /* Screen width minus padding and some margin */
+        min-width: calc(100vw - 5rem);
+        scroll-snap-align: center;
+        flex-shrink: 0;
+        margin: 0;
     }
 
-    .carousel-container {
-        padding: 0 0.75rem;
+    .carousel-controls {
+        display: flex; /* Show arrows on mobile */
     }
 
-    .carousel-wrapper {
-        margin: 0 -0.75rem;
+    .carousel-indicators {
+        display: flex;
+        margin-top: 3rem;
     }
+
+    .problem-card { padding: 2.5rem 2rem; }
+    .problem-title { font-size: 1.4rem; }
+    .problem-text { font-size: 0.95rem; }
+
+    .benefit-card { padding: 3rem 2rem; }
+    .benefit-title { font-size: 1.3rem; }
+    .benefit-text { font-size: 0.95rem; }
+
+    .blog-image-container { height: 200px; }
+    .blog-content { padding: 2rem; }
+    .blog-title { font-size: 1.4rem; }
+    .blog-excerpt { font-size: 0.95rem; }
+
+    .testimonial-card { padding: 2.5rem 2rem; }
+    .testimonial-text { font-size: 1rem; }
 }
