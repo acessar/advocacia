@@ -39,7 +39,7 @@ class MobileCarousel {
 
         this.indicatorsContainer = document.querySelector(`.carousel-indicators[data-carousel="${containerId}"]`);
         this.currentIndex = 0;
-        this.autoPlayTimer = null; // Para controlar o autoplay
+        this.autoPlayTimer = null;
         
         this.init();
     }
@@ -47,8 +47,8 @@ class MobileCarousel {
     init() {
         this.createIndicators();
         this.setupControls();
-        this.setupInteractionObserver(); // Para pausar o autoplay com interação
-        this.startAutoPlay(); // Inicia o autoplay
+        this.setupInteractionObserver();
+        this.startAutoPlay();
     }
 
     setupControls() {
@@ -70,13 +70,11 @@ class MobileCarousel {
     }
 
     prev() {
-        // Faz o carrossel voltar, com loop
         const targetIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
         this.scrollToItem(targetIndex);
     }
 
     next() {
-        // Faz o carrossel avançar, com loop
         const targetIndex = (this.currentIndex + 1) % this.items.length;
         this.scrollToItem(targetIndex);
     }
@@ -112,16 +110,13 @@ class MobileCarousel {
     }
 
     setupInteractionObserver() {
-        // Para o autoplay quando o usuário começa a arrastar
         this.container.addEventListener('touchstart', () => this.stopAutoPlay(), { once: true });
 
-        // Usamos um debounce para reiniciar o autoplay após o scroll manual
         let scrollTimer;
         this.container.addEventListener('scroll', () => {
             clearTimeout(scrollTimer);
             scrollTimer = setTimeout(() => {
                 this.updateActiveIndicator();
-                // Reinicia o autoplay se o usuário parou de interagir
                 this.resetAutoPlay();
             }, 150);
         });
@@ -159,12 +154,11 @@ class MobileCarousel {
         }
     }
 
-    // --- MÉTODOS DE AUTOPLAY ---
     startAutoPlay() {
-        this.stopAutoPlay(); // Garante que não haja múltiplos timers
+        this.stopAutoPlay();
         this.autoPlayTimer = setInterval(() => {
             this.next();
-        }, 5000); // 5 segundos
+        }, 5000);
     }
 
     stopAutoPlay() {
@@ -176,7 +170,6 @@ class MobileCarousel {
 
     resetAutoPlay() {
         this.stopAutoPlay();
-        // Reinicia após um tempo de inatividade para não ser agressivo
         setTimeout(() => this.startAutoPlay(), 8000);
     }
 }
@@ -185,14 +178,11 @@ class MobileCarousel {
 let mobileCarousels = [];
 
 function initCarousels() {
-    // Limpa os carrosséis existentes para evitar duplicação
     mobileCarousels.forEach(c => c.stopAutoPlay());
     mobileCarousels = [];
     
-    // Inicializa os carrosséis apenas em telas móveis
     if (window.innerWidth <= 767) {
         mobileCarousels.push(new MobileCarousel('problemsCarousel'));
-        mobileCarousels.push(new MobileCarousel('benefitsCarousel'));
         mobileCarousels.push(new MobileCarousel('blogCarousel'));
         mobileCarousels.push(new MobileCarousel('testimonialsCarousel'));
     }
@@ -207,14 +197,12 @@ faqItems.forEach(item => {
     question.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
         
-        // Fecha todos os outros itens antes de abrir o novo
         faqItems.forEach(i => {
             if (i !== item) {
                 i.classList.remove('active');
             }
         });
         
-        // Abre ou fecha o item clicado
         item.classList.toggle('active', !isActive);
     });
 });
@@ -227,14 +215,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const target = document.querySelector(targetId);
         
         if (target) {
-            // Fecha o menu mobile se estiver aberto
             if (navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
                 mobileToggle.textContent = '☰';
                 body.classList.remove('nav-open');
             }
             
-            // Rola suavemente para o alvo
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
@@ -245,7 +231,6 @@ const contactForm = document.querySelector('.contact-form form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        // Aqui você pode adicionar uma lógica de envio real (ex: fetch)
         alert('Mensagem enviada com sucesso! Nossa equipe entrará em contato em até 2 horas úteis.');
         contactForm.reset();
     });
@@ -260,7 +245,7 @@ function addTouchEffects(selector) {
             touchActive = true;
             setTimeout(() => {
                 if(touchActive) this.classList.add('touch-active');
-            }, 100); // Pequeno delay para evitar ativação em scroll
+            }, 100);
         });
         
         element.addEventListener('touchmove', function() {
@@ -280,9 +265,7 @@ function addTouchEffects(selector) {
     });
 }
 
-// Aplicar efeitos touch em todos os cards interativos
 addTouchEffects('.problem-card');
-addTouchEffects('.benefit-card');
 addTouchEffects('.blog-card');
 addTouchEffects('.testimonial-card');
 addTouchEffects('.faq-item');
@@ -290,7 +273,7 @@ addTouchEffects('.contact-item');
 
 
 // ========== CANVAS ANIMATIONS & RESIZE HANDLING ==========
-const canvases = document.querySelectorAll('.section-animation, .hero-animation, #aboutVisualCanvas');
+const canvases = document.querySelectorAll('.section-animation, .hero-animation');
 
 function resizeAllCanvases() {
     canvases.forEach(canvas => {
@@ -299,25 +282,18 @@ function resizeAllCanvases() {
             canvas.height = canvas.offsetHeight;
         }
     });
-    // Re-init carousels on resize to handle device orientation changes
     initCarousels();
 }
 
-// Initial setup
 resizeAllCanvases();
 initCarousels();
 
-// Re-initialize on resize, with a debounce
 let resizeTimer;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(resizeAllCanvases, 250);
 });
 
-
-// O restante do código das animações (que não precisa de alteração) continua aqui...
-// Para economizar espaço, o código das animações não será repetido,
-// mas ele deve ser mantido no arquivo final.
 
 // ========== HERO ANIMATION: Balança da Justiça com Documentos ==========
 const heroCanvas = document.getElementById('heroCanvas');
@@ -534,33 +510,6 @@ class Knot {
     }
 }
 
-class Shield {
-    constructor(x, y) {
-        this.x = x; this.y = y;
-        this.size = 25 + Math.random() * 25;
-        this.pulsePhase = Math.random() * Math.PI * 2;
-        this.pulseSpeed = 0.02;
-        this.rotation = Math.random() * Math.PI * 2;
-        this.opacity = 0.08 + Math.random() * 0.05;
-    }
-    update() { this.pulsePhase += this.pulseSpeed; }
-    draw(ctx) {
-        const pulse = 1 + Math.sin(this.pulsePhase) * 0.1;
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.rotation);
-        ctx.scale(pulse, pulse);
-        ctx.strokeStyle = `rgba(201, 169, 97, ${this.opacity})`;
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.moveTo(0, -this.size);
-        ctx.bezierCurveTo(this.size, -this.size, this.size, 0, 0, this.size);
-        ctx.bezierCurveTo(-this.size, 0, -this.size, -this.size, 0, -this.size);
-        ctx.stroke();
-        ctx.restore();
-    }
-}
-
 class FloatingBook {
     constructor(x, y) {
         this.x = x; this.y = y; this.baseY = y;
@@ -657,64 +606,31 @@ class QuestionMark {
     }
 }
 
-class ConnectionNetwork {
-     constructor(canvas) {
-        this.canvas = canvas;
-        this.ctx = canvas.getContext('2d');
-        this.nodes = [];
-        this.createNodes();
+class LegalBook {
+    constructor(x, y) {
+        this.x = x; this.y = y;
+        this.size = 25 + Math.random() * 20;
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.003;
+        this.opacity = 0.06 + Math.random() * 0.04;
     }
-    createNodes() {
-        const nodeCount = getScreenSize() === 'mobile' ? 15 : 25;
-        this.nodes = Array.from({ length: nodeCount }, () => ({
-            x: Math.random() * this.canvas.width,
-            y: Math.random() * this.canvas.height,
-            vx: (Math.random() - 0.5) * 0.4,
-            vy: (Math.random() - 0.5) * 0.4,
-            size: 1.5 + Math.random() * 2
-        }));
-    }
-    animate() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.nodes.forEach(node => {
-            node.x += node.vx;
-            node.y += node.vy;
-            if (node.x < 0 || node.x > this.canvas.width) node.vx *= -1;
-            if (node.y < 0 || node.y > this.canvas.height) node.vy *= -1;
-        });
-        for (let i = 0; i < this.nodes.length; i++) {
-            for (let j = i + 1; j < this.nodes.length; j++) {
-                const dist = Math.hypot(this.nodes[i].x - this.nodes[j].x, this.nodes[i].y - this.nodes[j].y);
-                if (dist < 100) {
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(this.nodes[i].x, this.nodes[i].y);
-                    this.ctx.lineTo(this.nodes[j].x, this.nodes[j].y);
-                    this.ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - dist / 100) * 0.3})`;
-                    this.ctx.stroke();
-                }
-            }
-        }
-        this.nodes.forEach(node => {
-            this.ctx.beginPath();
-            this.ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
-            this.ctx.fillStyle = 'rgba(201, 169, 97, 0.8)';
-            this.ctx.fill();
-        });
-        requestAnimationFrame(() => this.animate());
+    update() { this.rotation += this.rotationSpeed; }
+    draw(ctx) {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.rect(-this.size/2, -this.size/2, this.size, this.size * 1.4);
+        ctx.stroke();
+        ctx.restore();
     }
 }
-
-if (document.getElementById('aboutVisualCanvas')) {
-    const aboutVisualCanvas = document.getElementById('aboutVisualCanvas');
-    const network = new ConnectionNetwork(aboutVisualCanvas);
-    network.animate();
-    window.addEventListener('resize', () => network.createNodes());
-}
-
 
 // Initialize animations
 createParticleAnimation('problemsCanvas', Knot, 12);
-createParticleAnimation('benefitsCanvas', Shield, 20);
+createParticleAnimation('aboutCanvas', LegalBook, 15);
 createParticleAnimation('blogCanvas', FloatingBook, 15);
 createParticleAnimation('testimonialsCanvas', StarRating, 25);
 createParticleAnimation('contactCanvas', ContactNode, 30);
