@@ -635,3 +635,89 @@ createParticleAnimation('blogCanvas', FloatingBook, 15);
 createParticleAnimation('testimonialsCanvas', StarRating, 25);
 createParticleAnimation('contactCanvas', ContactNode, 30);
 createParticleAnimation('faqCanvas', QuestionMark, 15);
+{// ========== DIFFERENTIALS SECTION ANIMATION ==========
+
+// Animação da partícula para o canvas de fundo
+class DifferentialParticle {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = 20 + Math.random() * 20;
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.003;
+        this.opacity = 0.05 + Math.random() * 0.03;
+    }
+    
+    update() {
+        this.rotation += this.rotationSpeed;
+    }
+    
+    draw(ctx) {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        ctx.strokeStyle = `rgba(212, 175, 55, ${this.opacity})`;
+        ctx.lineWidth = 1.5;
+        
+        // Desenha uma balança simples
+        ctx.beginPath();
+        ctx.moveTo(-this.size/2, 0);
+        ctx.lineTo(this.size/2, 0);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.arc(0, -this.size/3, this.size/6, 0, Math.PI * 2);
+        ctx.stroke();
+        
+        ctx.restore();
+    }
+}
+
+// Inicializa a animação do canvas de fundo
+createParticleAnimation('differentialsCanvas', DifferentialParticle, 12);
+
+// ========== ROTATING TEXTS ANIMATION ==========
+let diffCurrentIndex = 0;
+const rotatingTextItems = document.querySelectorAll('.rotating-text-item');
+const diffIndicators = document.querySelectorAll('.diff-indicator');
+
+function rotateDifferentialsText() {
+    if (rotatingTextItems.length === 0 || diffIndicators.length === 0) return;
+    
+    // Remove active da classe atual
+    rotatingTextItems[diffCurrentIndex].classList.remove('active');
+    diffIndicators[diffCurrentIndex].classList.remove('active');
+    
+    // Avança para o próximo
+    diffCurrentIndex = (diffCurrentIndex + 1) % rotatingTextItems.length;
+    
+    // Adiciona active na nova classe
+    rotatingTextItems[diffCurrentIndex].classList.add('active');
+    diffIndicators[diffCurrentIndex].classList.add('active');
+}
+
+// Verifica se os elementos existem antes de iniciar
+if (rotatingTextItems.length > 0 && diffIndicators.length > 0) {
+    // Inicia a rotação automática após 1 segundo
+    setTimeout(() => {
+        setInterval(rotateDifferentialsText, 3000);
+    }, 1000);
+    
+    // Click nos indicadores para navegação manual
+    diffIndicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            if (diffCurrentIndex === index) return;
+            
+            rotatingTextItems[diffCurrentIndex].classList.remove('active');
+            diffIndicators[diffCurrentIndex].classList.remove('active');
+            
+            diffCurrentIndex = index;
+            
+            rotatingTextItems[diffCurrentIndex].classList.add('active');
+            diffIndicators[diffCurrentIndex].classList.add('active');
+        });
+    });
+}
+
+// ========== TOUCH EFFECTS PARA COMMITMENT CARDS ==========
+addTouchEffects('.commitment-card');}
